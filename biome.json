@@ -1,0 +1,62 @@
+{
+    "$schema": "https://biomejs.dev/schemas/1.8.0/schema.json",
+    "organizeImports": {
+        "enabled": true
+    },
+    "formatter": {
+        "enabled": true,
+        "include": ["src/**"],
+        "indentStyle": "tab",
+        "indentWidth": 4,
+        "lineWidth": 100
+    },
+    "files": {
+        "ignore": ["src/types/svgr.d.ts"],
+        "include": ["src/**"]
+    },
+    "javascript": {
+        "parser": {
+            "unsafeParameterDecoratorsEnabled": true
+        },
+        "formatter": {
+            "enabled": true,
+            "quoteStyle": "single",
+            "jsxQuoteStyle": "single",
+            "trailingCommas": "all",
+            "semicolons": "always",
+            "arrowParentheses": "always",
+            "quoteProperties": "asNeeded"
+        }
+    },
+    "linter": {
+        "enabled": true,
+        "rules": {
+            "recommended": true,
+            "correctness": {
+                "noConstAssign": "error",
+                "noSelfAssign": "error",
+                "noUndeclaredVariables": "error",
+                "noUnusedVariables": "warn",
+                "noVoidTypeReturn": "error",
+                "useHookAtTopLevel": "error",
+                "useExhaustiveDependencies": "warn"
+            },
+            "style": {
+                "useConst": "error",
+                "useSelfClosingElements": "error",
+                "useImportType": "error"
+            },
+            "suspicious": {
+                "noArrayIndexKey": "error",
+                "noCommentText": "error",
+                "noCompareNegZero": "error",
+                "noExplicitAny": "warn",
+                "noImportAssign": "error",
+                "noRedeclare": "error",
+                "noSelfCompare": "error",
+                "noShadowRestrictedNames": "error",
+                "useValidTypeof": "error"
+            }
+        }
+    }
+}
