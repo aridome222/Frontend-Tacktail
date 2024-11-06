@@ -1,5 +1,11 @@
 import styles from "./page.module.css";
 
 export default function Home() {
-  return <div className={styles.page}>こんにちはなのだ！</div>;
+  return(
+    <div>
+      <h1 className={styles.text}>
+        こんにちはなのだ！
+      </h1>
+    </div>
+  );
 }
