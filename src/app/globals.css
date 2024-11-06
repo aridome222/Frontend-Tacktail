@@ -13,12 +13,29 @@ body {
 }
 
 body {
-  /* color: #b39855; */
-  color: #FFF;
-  background: linear-gradient(to bottom right, var(--darkazure), #000);
-  /* background: #2C3E50; */
-  /* background: #b39855; */
-  /* background: #3E2723; */
+  color: var(--sunglow);
+  font-family: 'Courier New', Courier, monospace;
+  /* color: #FFF; */
+  /* background: linear-gradient(to bottom right, var(--licorice), #000); */
+  /* background: radial-gradient(
+    circle farthest-side at 10% 0,
+    var(--seal-brown) 0,
+    var(--black-bean) 20%,
+    var(--licorice) 50%
+  ); */
+  background: radial-gradient(
+    ellipse farthest-side at 0 0,
+    var(--seal-brown),
+    var(--black-bean) 25%,
+    var(--licorice),
+    transparent
+  ),radial-gradient(
+    ellipse farthest-side at 100% 100%,
+    var(--seal-brown),
+    var(--black-bean) 25%,
+    var(--licorice),
+    transparent
+  ),var(--licorice);
   background-repeat: no-repeat;
   height: 100vh;
 }
