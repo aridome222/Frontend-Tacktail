@@ -1,9 +1,9 @@
 :root {
-  --licorice: #0E0000;
+  --licorice: #0e0000;
   --black-bean: #270000;
-  --seal-brown: #5B1700;
-  --barn-red : #810F01;
-  --sunglow: #FCCE3E;
+  --seal-brown: #5b1700;
+  --barn-red : #810f01;
+  --gold: #daae69;
 }
 
 html,
@@ -13,7 +13,7 @@ body {
 }
 
 body {
-  color: var(--sunglow);
+  color: var(--gold);
   font-family: 'Courier New', Courier, monospace;
   /* color: #FFF; */
   /* background: linear-gradient(to bottom right, var(--licorice), #000); */
