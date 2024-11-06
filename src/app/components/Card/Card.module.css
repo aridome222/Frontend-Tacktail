@@ -2,6 +2,7 @@
     background-color: gray;
     width: 500px;
     display: flex;
+    align-items: center;
     padding: 10px;
     border-radius: 15px;
 }
@@ -11,7 +12,8 @@
 }
 
 .mediaBody{
-    display: flex flex-col;
+    display: flex;
+    flex-direction: column;
     padding-left: 10px;
 }
 
