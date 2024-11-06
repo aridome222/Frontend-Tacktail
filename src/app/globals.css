@@ -1,13 +1,9 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --licorice: #0e0000;
+  --black-bean: #270000;
+  --seal-brown: #5b1700;
+  --barn-red : #810f01;
+  --gold: #daae69;
 }
 
 html,
@@ -17,26 +13,39 @@ body {
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  color: var(--gold);
+  font-family: 'Courier New', Courier, monospace;
+  /* color: #FFF; */
+  /* background: linear-gradient(to bottom right, var(--licorice), #000); */
+  /* background: radial-gradient(
+    circle farthest-side at 10% 0,
+    var(--seal-brown) 0,
+    var(--black-bean) 20%,
+    var(--licorice) 50%
+  ); */
+  background: radial-gradient(
+    ellipse farthest-side at 0 0,
+    var(--seal-brown),
+    var(--black-bean) 25%,
+    var(--licorice),
+    transparent
+  ),radial-gradient(
+    ellipse farthest-side at 100% 100%,
+    var(--seal-brown),
+    var(--black-bean) 25%,
+    var(--licorice),
+    transparent
+  ),var(--licorice);
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+main {
+  padding: 0 10px;
 }
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
 }
