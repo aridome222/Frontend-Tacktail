@@ -9,7 +9,6 @@ export const StoryTop: React.FC = () => {
         <p className={styles.description}>必要な材料を買って</p>
         <p className={styles.description}>指定されたお酒を作ってみよう！</p>
       </div>
-      {/* <div className={styles.radialBack}></div> */}
       <div className={styles.imageParent}>
         <Image
           className={styles.image}

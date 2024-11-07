@@ -17,14 +17,6 @@ body {
 body {
   color: var(--gold);
   font-family: "Courier New", Courier, monospace;
-  /* color: #FFF; */
-  /* background: linear-gradient(to bottom right, var(--licorice), #000); */
-  /* background: radial-gradient(
-    circle farthest-side at 10% 0,
-    var(--seal-brown) 0,
-    var(--black-bean) 20%,
-    var(--licorice) 50%
-  ); */
   background: radial-gradient(
       ellipse farthest-side at 0 0,
       var(--seal-brown),
