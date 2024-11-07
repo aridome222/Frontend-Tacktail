@@ -1,0 +1,85 @@
+.container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  width: 100%;
+  max-width: 500px;
+}
+
+.formContainer {
+  width: 80%;
+  padding: 20px;
+  background-color: var(--licorice);
+  border-radius: 0.75rem;
+  border: solid 2px var(--gold);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  margin-top: 1.5rem;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ccc;
+}
+
+.subtitle {
+  margin-top: 0.5rem;
+  font-size: 15px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.inputParent {
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: white;
+  border: 1px solid var(--seal-brown);
+  border-radius: 0.3rem;
+  color: var(--gold);
+  outline: none;
+}
+
+.rememberMe {
+  display: flex;
+  align-items: center;
+}
+
+.checkboxLabel {
+  font-size: 15px;
+  color: var(--gold);
+}
+
+.forgotPassword {
+  font-size: 15px;
+  color: var(--gold);
+  text-decoration: none;
+}
+
+.button {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: var(--barn-red);
+  color: #ccc;
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
