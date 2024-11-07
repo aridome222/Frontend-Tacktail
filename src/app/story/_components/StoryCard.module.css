@@ -18,17 +18,33 @@
 
 .text {
   width: 100%;
-  padding: 10px;
+  padding: 0 10px;
   /* color: #000; */
   font-weight: bold;
 }
 
 .description {
   color: #eee;
+  margin-bottom: 0.5em;
   font-size: 16px;
+}
+
+.listParent {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
 }
 
 .list {
   padding-left: 1em;
   font-size: 14px;
+  width: fit-content;
+}
+
+.material {
+  width: fit-content;
+}
+
+.etc {
+  margin-left: 1em;
 }

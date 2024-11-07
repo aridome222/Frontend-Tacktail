@@ -8,6 +8,7 @@ type StoryCardProps = {
 }
 
 export const StoryCard: React.FC<StoryCardProps> = (props) => {
+  const MAX_MATERIAL = 3;
   return (
     <div className={styles.card}>
       <div className={styles.imageParent}>
@@ -22,15 +23,22 @@ export const StoryCard: React.FC<StoryCardProps> = (props) => {
       </div>
       <div className={styles.text}>
         <p className={styles.description}>{props.title}</p>
-        <ul className={styles.list}>
-          {props.recipe.map((matelial, index) => {
-            return (
-              <li key={index}>
-                {matelial}
-              </li>
-            );
-          })}
-        </ul>
+        <div className={styles.listParent}>
+          <ul className={styles.list}>
+            {props.recipe.map((material, index) => {
+              return (
+                <>
+                  {index < MAX_MATERIAL &&
+                    <li className={styles.material} key={index}>
+                      {material}
+                    </li>
+                  }
+                </>
+              );
+            })}
+          </ul>
+          {props.recipe.length >= MAX_MATERIAL && <span className={styles.etc}>etc</span>}
+        </div>
       </div>
     </div>
   );
