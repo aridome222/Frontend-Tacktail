@@ -1,0 +1,36 @@
+.top {
+  position: relative;
+  padding: 20px 0;
+}
+
+.text {
+  position: absolute;
+  top: 50px;
+  width: 100%;
+  z-index: 1;
+  text-align: center;
+  color: #fff;
+}
+
+.title {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.imageParent {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 8;
+}
+
+.image {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+}

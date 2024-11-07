@@ -1,0 +1,76 @@
+.card {
+  position: relative;
+  margin-bottom: 5px;
+  padding: 7px;
+  background-color: #000;
+  border-radius: 5px;
+  border-top: solid 2px var(--gold);
+  border-bottom: solid 2px var(--gold);
+  display: flex;
+  justify-content: space-between;
+}
+
+.active {
+  opacity: 1;
+}
+
+.deactive {
+  opacity: 0.4;
+}
+
+.imageParent {
+  position: relative;
+}
+
+.image {
+  border-radius: 5px;
+}
+
+.text {
+  width: 100%;
+  padding: 0 10px;
+  font-weight: bold;
+}
+
+.description {
+  color: #eee;
+  margin-bottom: 0.5em;
+  font-size: 16px;
+}
+
+.listParent {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.list {
+  padding-left: 1em;
+  font-size: 14px;
+  width: fit-content;
+}
+
+.material {
+  width: fit-content;
+}
+
+.etc {
+  margin-left: 1em;
+}
+
+.clearParent {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  width: 100%;
+  margin-top: 20px;
+  pointer-events: none;
+}
+
+.clear {
+  position: relative;
+  border-radius: 5px;
+  transform: rotate(7deg);
+}
