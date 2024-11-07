@@ -1,35 +1,91 @@
 .page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  font-family: Arial, sans-serif;
+	display: flex;
+	flex-direction: column;
+	/* align-items: center; */
+	padding: 20px;
+	font-family: Arial, sans-serif;
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  width: 300px;
+.description {
+	display: grid; /* グリッドレイアウトを使用 */
+	grid-template-columns: 150px 1fr; /* 画像部分に150px、テキスト部分に残りを占める */
+	gap: 10px; /* 画像とテキストの間にスペースを追加 */
 }
 
-.input {
-  padding: 8px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.imageContainer {
+	display: flex;
+	justify-content: center; /* 横方向に中央揃え */
+	align-items: center; /* 縦方向に中央揃え */
+	height: 100%; /* 親要素に高さを合わせる */
 }
 
-.button {
-  padding: 10px;
-  font-size: 16px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+.image {
+	max-width: 100%; /* 画像が親要素にフィットするように */
+	height: auto; /* 高さは自動調整 */
 }
 
-.button:hover {
-  background-color: #0056b3;
+.text {
+	display: flex;
+	flex-direction: column; /* テキストを縦並びにする */
+	gap: 5px; /* 各テキスト間にスペースを追加 */
+}
+
+.text h2 {
+	margin: 0; /* カクテル名の上部の余白を削除 */
+}
+
+.text p {
+	margin: 0; /* 各段落の余白を削除 */
+}
+
+.rangeSliderContainer {
+	display: flex; /* 横並びにする */
+	flex-direction: column; /* これで、材料とレンジスライダーのペアを縦に並べる */
+	gap: 20px; /* 各ペアの間隔を追加 */
+	width: 100%; /* 親要素が画面幅に合わせて広がる */
+}
+
+.rangeSliderItem {
+	display: flex; /* 横並びにする */
+	align-items: center; /* ラベルとスライダーを縦に揃える */
+	gap: 10px; /* ラベルとスライダーの間にスペースを追加 */
+}
+
+.rangeSliderItem label {
+	width: 30%; /* 材料名のラベルの幅を指定 */
+}
+
+.rangeSliderItem input[type="range"] {
+	width: 100%; /* スライダーの幅を親要素の幅に合わせて広げる */
+	-webkit-appearance: none; /* スライダーのデフォルメを解除 */
+	height: 8px; /* スライダーの高さ */
+	background: linear-gradient(
+		to right,
+		#ddd 0%,
+		#ddd 10%,
+		#ccc 10%,
+		#ccc 20%,
+		#ddd 20%,
+		#ddd 30%,
+		#ccc 30%,
+		#ccc 40%,
+		#ddd 40%,
+		#ddd 50%,
+		#ccc 50%,
+		#ccc 60%,
+		#ddd 60%,
+		#ddd 70%,
+		#ccc 70%,
+		#ccc 80%,
+		#ddd 80%,
+		#ddd 90%,
+		#ccc 90%,
+		#ccc 100%
+	); /* 目盛りのデザイン */
+	border-radius: 5px;
+	outline: none;
+}
+
+.rangeSlider input[type="range"]:focus {
+	outline: none;
 }
