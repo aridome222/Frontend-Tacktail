@@ -13,56 +13,64 @@ const Story: React.FC = () => {
       "image": "/images/cocktail/moscow_mule.jpg",
       "recipe": [
         "ウォッカ", "ジンジャーエール"
-      ]
+      ],
+      "day": 1
     },
     {
       "title": "スクリュードライバーを作ってみよう",
       "image": "/images/cocktail/screw_driver.jpg",
       "recipe": [
         "ウォッカ", "オレンジジュース"
-      ]
+      ],
+      "day": 2
     },
     {
       "title": "ジンバックを作ってみよう",
       "image": "/images/cocktail/gin_buck.jpg",
       "recipe": [
         "ジン", "ジンジャーエール"
-      ]
+      ],
+      "day": 3
     },
     {
       "title": "ロングアイランドアイスティーを作ってみよう",
       "image": "/images/cocktail/long_island_ice_tea.jpg",
       "recipe": [
         "ジン", "ウォッカ", "テキーラ", "ラム", "コアントロー", "コーラ"
-      ]
+      ],
+      "day": 4
     },
     {
       "title": "モスコミュールを作ってみよう",
       "image": "/images/cocktail/moscow_mule.jpg",
       "recipe": [
         "ウォッカ", "ジンジャーエール"
-      ]
+      ],
+      "day": 5
     },
     {
       "title": "スクリュードライバーを作ってみよう",
       "image": "/images/cocktail/screw_driver.jpg",
       "recipe": [
         "ウォッカ", "オレンジジュース"
-      ]
+      ],
+      "day": 6
     },
     {
       "title": "ジンバックを作ってみよう",
       "image": "/images/cocktail/gin_buck.jpg",
       "recipe": [
         "ジン", "ジンジャーエール"
-      ]
+      ],
+      "day": 7
     },
     {
       "title": "ロングアイランドアイスティーを作ってみよう",
       "image": "/images/cocktail/long_island_ice_tea.jpg",
       "recipe": [
         "ジン", "ウォッカ", "テキーラ", "ラム", "コアントロー", "コーラ"
-      ]
+      ],
+      "day": 8
     },
   ];
 
@@ -84,7 +92,9 @@ const Story: React.FC = () => {
               <StoryCard title={item.title}
                 image={DEFALT_IMAGE}
                 recipe={item.recipe}
-                isActive isClear={false}
+                day={item.day}
+                isActive
+                isClear={false}
                 key={index}
               />
             }
@@ -93,6 +103,7 @@ const Story: React.FC = () => {
                 title={item.title}
                 image={DEFALT_IMAGE}
                 recipe={item.recipe}
+                day={item.day}
                 isActive={false}
                 isClear={false}
                 key={index}

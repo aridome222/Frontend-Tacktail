@@ -1,10 +1,12 @@
 import Image from "next/image";
 import styles from "./StoryCard.module.css";
+import { CocktailImage } from "@/app/components/CocktailImage";
 
 type StoryCardProps = {
   title: string
   image: string
   recipe: string[]
+  day: number
   isActive: boolean
   isClear: boolean
 }
@@ -15,14 +17,7 @@ export const StoryCard: React.FC<StoryCardProps> = (props) => {
   return (
     <div className={`${styles.card} ${props.isActive ? styles.active : styles.deactive}`}>
       <div className={styles.imageParent}>
-        <Image
-          className={styles.image}
-          src={props.image}
-          alt="cocktail image"
-          width={100}
-          height={100}
-          priority
-        />
+        <CocktailImage backgroundImagePath={props.image} cocktailName={`${props.day}日目`} />
       </div>
       <div className={styles.text}>
         <p className={styles.description}>{props.title}</p>
