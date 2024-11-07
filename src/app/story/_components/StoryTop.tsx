@@ -5,9 +5,9 @@ export const StoryTop: React.FC = () => {
   return (
     <div className={styles.top}>
       <div className={styles.text}>
-        <h1>Story Mode!</h1>
-        <p>必要な材料を買って</p>
-        <p>指定されたお酒を作ってみよう</p>
+        <h1 className={styles.title}>Story Mode</h1>
+        <p className={styles.description}>必要な材料を買って</p>
+        <p className={styles.description}>指定されたお酒を作ってみよう！</p>
       </div>
       {/* <div className={styles.radialBack}></div> */}
       <div className={styles.imageParent}>

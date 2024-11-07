@@ -12,6 +12,15 @@
   color: #fff;
 }
 
+.title {
+  font-size: 32px;
+}
+
+.description {
+  font-size: 18px;
+  font-weight: bold;
+}
+
 .imageParent {
   position: relative;
   width: 100%;
