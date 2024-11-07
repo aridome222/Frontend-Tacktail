@@ -1,0 +1,20 @@
+.container {
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  top: 30%;
+  left: -10%;
+  transform: rotate(25deg);
+  overflow: hidden;
+}
+
+.cocktailName {
+  color: #00a400;
+  position: absolute;
+  top: 40%;
+  left: 15%;
+  font-size: 12px;
+}
