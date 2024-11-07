@@ -23,11 +23,13 @@ const recipesData = [
 const Recipes = () => {
   return (
     <>
-      <h1>レシピ一覧</h1>
-      <div className={styles.cardList}>
-        {recipesData.map((recipe) => (
-          <Card key={recipe.id} heading={recipe.heading} contents={recipe.contents} />
-        ))}
+      <div className={styles.page}>
+        <h1 className={styles.h1}>レシピ一覧</h1>
+        <div className={styles.cardList}>
+          {recipesData.map((recipe) => (
+            <Card key={recipe.id} heading={recipe.heading} contents={recipe.contents} />
+          ))}
+        </div>
       </div>
     </>
   );

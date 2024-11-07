@@ -15,9 +15,9 @@ export const Card: React.FC<CardProps> = ({ heading, contents }: CardProps) => {
         <div className={styles.mediaBody}>
           <h1 className={styles.heading}>{heading}</h1>
           {contents.map((item) => (
-            <p className={styles.contents} key={item}>
+            <ul className={styles.contents} key={item}>
               {item}
-            </p>
+            </ul>
           ))}
         </div>
       </div>
