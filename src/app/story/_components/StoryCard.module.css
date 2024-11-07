@@ -9,6 +9,14 @@
   justify-content: space-between;
 }
 
+.active {
+  opacity: 1;
+}
+
+.deactive {
+  opacity: 0.4;
+}
+
 .imageParent {
   position: relative;
 }

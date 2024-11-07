@@ -5,12 +5,14 @@ type StoryCardProps = {
   title: string
   image: string
   recipe: string[]
+  isActive: boolean
 }
 
 export const StoryCard: React.FC<StoryCardProps> = (props) => {
   const MAX_MATERIAL = 3;
+
   return (
-    <div className={styles.card}>
+    <div className={`${styles.card} ${props.isActive ? styles.active : styles.deactive}`}>
       <div className={styles.imageParent}>
         <Image
           className={styles.image}
