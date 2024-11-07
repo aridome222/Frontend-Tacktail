@@ -2,7 +2,7 @@
   --licorice: #0e0000;
   --black-bean: #270000;
   --seal-brown: #5b1700;
-  --barn-red : #810f01;
+  --barn-red: #810f01;
   --gold: #daae69;
 }
 
@@ -14,7 +14,7 @@ body {
 
 body {
   color: var(--gold);
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   /* color: #FFF; */
   /* background: linear-gradient(to bottom right, var(--licorice), #000); */
   /* background: radial-gradient(
@@ -24,18 +24,19 @@ body {
     var(--licorice) 50%
   ); */
   background: radial-gradient(
-    ellipse farthest-side at 0 0,
-    var(--seal-brown),
-    var(--black-bean) 25%,
-    var(--licorice),
-    transparent
-  ),radial-gradient(
-    ellipse farthest-side at 100% 100%,
-    var(--seal-brown),
-    var(--black-bean) 25%,
-    var(--licorice),
-    transparent
-  ),var(--licorice);
+      ellipse farthest-side at 0 0,
+      var(--seal-brown),
+      var(--black-bean) 25%,
+      var(--licorice),
+      transparent
+    ),
+    radial-gradient(
+      ellipse farthest-side at 100% 100%,
+      var(--seal-brown),
+      var(--black-bean) 25%,
+      var(--licorice),
+      transparent
+    ), var(--licorice);
   background-repeat: no-repeat;
   height: 100vh;
 }

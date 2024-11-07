@@ -1,16 +1,17 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
+import type { Metadata } from 'next';
+import localFont from 'next/font/local';
+import type React from 'react';
+import './globals.css';
 
 const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+  src: './fonts/GeistVF.woff',
+  variable: '--font-geist-sans',
+  weight: '100 900',
 });
 
 export const metadata: Metadata = {
-  title: "TackTail",
-  description: "宅飲みを一段上の領域へ！あなたも宅飲みカクテル始めませんか！？",
+  title: 'TackTail',
+  description: '宅飲みを一段上の領域へ！あなたも宅飲みカクテル始めませんか！？',
 };
 
 export default function RootLayout({
@@ -19,11 +20,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="jp">
+    <html lang='ja'>
       <body className={`${geistSans.variable}`}>
-        <main>
-          {children}
-        </main>
+        <main>{children}</main>
       </body>
     </html>
   );
