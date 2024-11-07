@@ -6,9 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "biome lint --write 'src/**/*.{js,ts,jsx,tsx}'",
-    "format": "biome format 'src/**/*.{js,ts,jsx,tsx}' --write",
-    "check": "biome check --write 'src/**/*.{js,ts,jsx,tsx}'"
+    "lint": "biome lint --write --diagnostic-level=error *",
+    "format": "biome format --write --diagnostic-level=error *",
+    "check": "biome check --diagnostic-level=error *"
   },
   "dependencies": {
     "next": "15.0.2",

@@ -1,4 +1,4 @@
-import styles from "./upload.module.css"; // CSSモジュールのインポート
+import styles from './upload.module.css'; // CSSモジュールのインポート
 
 export default function Upload() {
   return (
@@ -11,23 +11,23 @@ export default function Upload() {
         {/* カクテル名フィールド */}
         <label>
           カクテル名:
-          <input type="text" name="name" className={styles.input} />
+          <input type='text' name='name' className={styles.input} />
         </label>
 
         {/* コメントフィールド */}
         <label>
           コメント:
-          <input type="text" name="comment" className={styles.input} />
+          <input type='text' name='comment' className={styles.input} />
         </label>
 
         {/* レシピフィールド */}
         <label>
           必要なレシピ:
-          <input type="text" name="text" className={styles.input} />
+          <input type='text' name='text' className={styles.input} />
         </label>
 
         {/* 送信ボタン */}
-        <button type="submit" className={styles.button}>
+        <button type='submit' className={styles.button}>
           投稿
         </button>
       </form>
