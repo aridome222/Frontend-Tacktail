@@ -7,6 +7,7 @@ export const StoryTop: React.FC = () => {
       <div className={styles.text}>
         <h1>Story Mode!</h1>
       </div>
+      {/* <div className={styles.radialBack}></div> */}
       <div className={styles.imageParent}>
         <Image
           className={styles.image}
