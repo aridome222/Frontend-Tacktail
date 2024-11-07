@@ -1,9 +1,11 @@
 :root {
-  --licorice: #0e0000;
+  /* --licorice: #0e0000; */
+  --licorice: #1d1d1d;
   --black-bean: #270000;
   --seal-brown: #5b1700;
   --barn-red: #810f01;
-  --gold: #daae69;
+  /* --gold: #daae69; */
+  --gold: #846b3a;
 }
 
 html,
@@ -15,14 +17,6 @@ body {
 body {
   color: var(--gold);
   font-family: "Courier New", Courier, monospace;
-  /* color: #FFF; */
-  /* background: linear-gradient(to bottom right, var(--licorice), #000); */
-  /* background: radial-gradient(
-    circle farthest-side at 10% 0,
-    var(--seal-brown) 0,
-    var(--black-bean) 20%,
-    var(--licorice) 50%
-  ); */
   background: radial-gradient(
       ellipse farthest-side at 0 0,
       var(--seal-brown),
