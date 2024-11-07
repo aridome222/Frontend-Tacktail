@@ -6,8 +6,18 @@
   text-align: center;
 }
 
+/* .radialBack {
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  aspect-ratio: 16 / 8;
+  background:
+    radial-gradient(ellipse at center, var(--licorice), var(--gold));
+} */
+
 .imageParent {
   position: relative;
+  /* z-index: 0; */
   width: 100%;
   aspect-ratio: 16 / 8;
 }
@@ -15,4 +25,6 @@
 .image {
   width: 100%;
   object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
 }
