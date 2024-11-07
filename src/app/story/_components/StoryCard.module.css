@@ -57,3 +57,17 @@
 .etc {
   margin-left: 1em;
 }
+
+.clearParent {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.clear {
+  position: relative;
+  border-radius: 5px;
+  transform: rotate(7deg);
+}

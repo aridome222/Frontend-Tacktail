@@ -6,6 +6,7 @@ type StoryCardProps = {
   image: string
   recipe: string[]
   isActive: boolean
+  isClear: boolean
 }
 
 export const StoryCard: React.FC<StoryCardProps> = (props) => {
@@ -17,7 +18,7 @@ export const StoryCard: React.FC<StoryCardProps> = (props) => {
         <Image
           className={styles.image}
           src={props.image}
-          alt="image of story mode"
+          alt="cocktail image"
           width={100}
           height={100}
           priority
@@ -42,6 +43,18 @@ export const StoryCard: React.FC<StoryCardProps> = (props) => {
           {props.recipe.length >= MAX_MATERIAL && <span className={styles.etc}>etc</span>}
         </div>
       </div>
+      {props.isClear &&
+        <div className={styles.clearParent}>
+          <Image
+            className={styles.clear}
+            src="/images/clear_gold.png"
+            alt="clear image"
+            width={100}
+            height={30}
+            priority
+          />
+        </div>
+      }
     </div>
   );
 };
