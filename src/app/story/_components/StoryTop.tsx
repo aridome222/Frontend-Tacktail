@@ -1,5 +1,6 @@
-import Image from "next/image";
-import styles from "./StoryTop.module.css";
+import type React from 'react';
+import Image from 'next/image';
+import styles from './StoryTop.module.css';
 
 export const StoryTop: React.FC = () => {
   return (
@@ -12,12 +13,12 @@ export const StoryTop: React.FC = () => {
       <div className={styles.imageParent}>
         <Image
           className={styles.image}
-          src="/images/story_top.png"
-          alt="image of story mode"
+          src='/images/story_top.png'
+          alt='image of story mode'
           fill
           priority
         />
       </div>
     </div>
   );
-}
+};
