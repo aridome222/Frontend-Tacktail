@@ -1,15 +1,16 @@
-import Image from "next/image";
-import styles from "./StoryCard.module.css";
-import { CocktailImage } from "@/app/components/CocktailImage";
+import Image from 'next/image';
+import styles from './StoryCard.module.css';
+import { CocktailImage } from '@/app/components/CocktailImage';
+import type React from 'react';
 
 type StoryCardProps = {
-  title: string
-  image: string
-  recipe: string[]
-  day: number
-  isActive: boolean
-  isClear: boolean
-}
+  title: string;
+  image: string;
+  recipe: string[];
+  day: number;
+  isActive: boolean;
+  isClear: boolean;
+};
 
 export const StoryCard: React.FC<StoryCardProps> = (props) => {
   const MAX_MATERIAL = 3;
@@ -25,31 +26,29 @@ export const StoryCard: React.FC<StoryCardProps> = (props) => {
           <ul className={styles.list}>
             {props.recipe.map((material, index) => {
               return (
-                <>
-                  {index < MAX_MATERIAL &&
-                    <li className={styles.material} key={index}>
-                      {material}
-                    </li>
-                  }
-                </>
+                index < MAX_MATERIAL && (
+                  <li className={styles.material} key={material}>
+                    {material}
+                  </li>
+                )
               );
             })}
           </ul>
           {props.recipe.length >= MAX_MATERIAL && <span className={styles.etc}>etc</span>}
         </div>
       </div>
-      {props.isClear &&
+      {props.isClear && (
         <div className={styles.clearParent}>
           <Image
             className={styles.clear}
-            src="/images/clear_gold.png"
-            alt="clear image"
+            src='/images/clear_gold.png'
+            alt='clear image'
             width={100}
             height={30}
             priority
           />
         </div>
-      }
+      )}
     </div>
   );
 };
