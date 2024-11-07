@@ -1,11 +1,12 @@
 import React from "react";
 import { StoryCard } from "./_components/StoryCard";
+import { StoryTop } from "./_components/StoryTop";
 // import styles from "./story.module.css";
 
 const Story: React.FC = () => {
   return (
     <>
-      <h1>Storyモード</h1>
+      <StoryTop />
       <StoryCard />
     </>
   );
