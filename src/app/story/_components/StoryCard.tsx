@@ -15,7 +15,11 @@ export const StoryCard: React.FC = () => {
         />
       </div>
       <div className={styles.text}>
-        <h2 className={styles.description}>モスコミュールを作ってみよう</h2>
+        <p className={styles.description}>モスコミュールを作ってみよう</p>
+        <ul className={styles.list}>
+          <li>ウォッカ</li>
+          <li>ジンジャーエール</li>
+        </ul>
       </div>
     </div>
   );
