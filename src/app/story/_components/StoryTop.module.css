@@ -12,15 +12,6 @@
   color: #fff;
 }
 
-/* .radialBack {
-  z-index: 1;
-  position: absolute;
-  width: 100%;
-  aspect-ratio: 16 / 8;
-  background:
-    radial-gradient(ellipse at center, var(--licorice), var(--gold));
-} */
-
 .imageParent {
   position: relative;
   width: 100%;
