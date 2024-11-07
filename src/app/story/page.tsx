@@ -36,6 +36,34 @@ const Story: React.FC = () => {
         "ジン", "ウォッカ", "テキーラ", "ラム", "コアントロー", "コーラ"
       ]
     },
+    {
+      "title": "モスコミュールを作ってみよう",
+      "image": "/images/cocktail/moscow_mule.jpg",
+      "recipe": [
+        "ウォッカ", "ジンジャーエール"
+      ]
+    },
+    {
+      "title": "スクリュードライバーを作ってみよう",
+      "image": "/images/cocktail/screw_driver.jpg",
+      "recipe": [
+        "ウォッカ", "オレンジジュース"
+      ]
+    },
+    {
+      "title": "ジンバックを作ってみよう",
+      "image": "/images/cocktail/gin_buck.jpg",
+      "recipe": [
+        "ジン", "ジンジャーエール"
+      ]
+    },
+    {
+      "title": "ロングアイランドアイスティーを作ってみよう",
+      "image": "/images/cocktail/long_island_ice_tea.jpg",
+      "recipe": [
+        "ジン", "ウォッカ", "テキーラ", "ラム", "コアントロー", "コーラ"
+      ]
+    },
   ];
 
   return (
@@ -45,13 +73,30 @@ const Story: React.FC = () => {
         return (
           <>
             {index < MOCK_STORY_CLEAR &&
-              <StoryCard {...item} isActive key={index} />
+              <StoryCard
+                {...item}
+                isActive
+                isClear
+                key={index}
+              />
             }
             {index == MOCK_STORY_CLEAR &&
-              <StoryCard title={item.title} image={DEFALT_IMAGE} recipe={item.recipe} isActive key={index} />
+              <StoryCard title={item.title}
+                image={DEFALT_IMAGE}
+                recipe={item.recipe}
+                isActive isClear={false}
+                key={index}
+              />
             }
             {index > MOCK_STORY_CLEAR &&
-              <StoryCard title={item.title} image={DEFALT_IMAGE} recipe={item.recipe} isActive={false} key={index} />
+              <StoryCard
+                title={item.title}
+                image={DEFALT_IMAGE}
+                recipe={item.recipe}
+                isActive={false}
+                isClear={false}
+                key={index}
+              />
             }
           </>
         );
