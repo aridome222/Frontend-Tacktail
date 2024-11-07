@@ -15,7 +15,7 @@ body {
 }
 
 body {
-  color: var(--gold);
+  color: white;
   font-family: "Courier New", Courier, monospace;
   background: radial-gradient(
       ellipse farthest-side at 0 0,
