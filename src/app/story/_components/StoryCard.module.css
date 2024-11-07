@@ -1,4 +1,21 @@
 .card {
-  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 7px;
   background-color: var(--barn-red);
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.imageParent {
+  position: relative;
+}
+
+.image {
+  border-radius: 5px;
+}
+
+.text {
+  width: 100%;
+  padding-left: 10px;
 }
