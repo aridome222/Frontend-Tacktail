@@ -57,35 +57,4 @@
 
 .rangeSliderItem input[type="range"] {
 	width: 100%; /* スライダーの幅を親要素の幅に合わせて広げる */
-	-webkit-appearance: none; /* スライダーのデフォルメを解除 */
-	height: 8px; /* スライダーの高さ */
-	background: linear-gradient(
-		to right,
-		#ddd 0%,
-		#ddd 10%,
-		#ccc 10%,
-		#ccc 20%,
-		#ddd 20%,
-		#ddd 30%,
-		#ccc 30%,
-		#ccc 40%,
-		#ddd 40%,
-		#ddd 50%,
-		#ccc 50%,
-		#ccc 60%,
-		#ddd 60%,
-		#ddd 70%,
-		#ccc 70%,
-		#ccc 80%,
-		#ddd 80%,
-		#ddd 90%,
-		#ccc 90%,
-		#ccc 100%
-	); /* 目盛りのデザイン */
-	border-radius: 5px;
-	outline: none;
-}
-
-.rangeSlider input[type="range"]:focus {
-	outline: none;
 }

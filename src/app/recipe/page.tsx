@@ -41,8 +41,22 @@ const Recipe: React.FC = () => {
               max="10"
               step="1"
               value={5}
+              list="range-list"
             />
             10
+            <datalist id="range-list">
+              <option value="0" />
+              <option value="1" />
+              <option value="2" />
+              <option value="3" />
+              <option value="4" />
+              <option value="5" />
+              <option value="6" />
+              <option value="7" />
+              <option value="8" />
+              <option value="9" />
+              <option value="10" />
+            </datalist>
           </div>
           <div className={styles.rangeSliderItem}>
             <label htmlFor="orange-juice-slider">オレンジジュース</label>
@@ -54,8 +68,22 @@ const Recipe: React.FC = () => {
               max="10"
               step="1"
               value={5}
+              list="range-list2"
             />
             10
+            <datalist id="range-list2">
+              <option value="0" />
+              <option value="1" />
+              <option value="2" />
+              <option value="3" />
+              <option value="4" />
+              <option value="5" />
+              <option value="6" />
+              <option value="7" />
+              <option value="8" />
+              <option value="9" />
+              <option value="10" />
+            </datalist>
           </div>
         </div>
       </div>
