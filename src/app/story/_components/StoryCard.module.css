@@ -1,9 +1,10 @@
 .card {
   margin-bottom: 5px;
   padding: 7px;
-  /* background-color: var(--seal-brown); */
   background-color: #000;
   border-radius: 5px;
+  border-top: solid 2px var(--gold);
+  border-bottom: solid 2px var(--gold);
   display: flex;
   justify-content: space-between;
 }
