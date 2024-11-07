@@ -4,14 +4,16 @@ import { StoryTop } from "./_components/StoryTop";
 // import styles from "./story.module.css";
 
 const Story: React.FC = () => {
+  const DEFALT_IMAGE = "/images/hatena.png"
+
+  const MOCK_STORY_CLEAR = 2;
   const MOCK_DATA_LIST = [
     {
       "title": "モスコミュールを作ってみよう",
       "image": "/images/cocktail/moscow_mule.jpg",
       "recipe": [
         "ウォッカ", "ジンジャーエール"
-      ],
-      "story": 2
+      ]
     },
     {
       "title": "スクリュードライバーを作ってみよう",
@@ -34,14 +36,24 @@ const Story: React.FC = () => {
         "ジン", "ウォッカ", "テキーラ", "ラム", "コアントロー", "コーラ"
       ]
     },
-  ]
+  ];
 
   return (
     <>
       <StoryTop/>
       {MOCK_DATA_LIST.map((item, index) => {
         return (
-          <StoryCard {...item} key={index} />
+          <>
+            {index < MOCK_STORY_CLEAR &&
+              <StoryCard {...item} isActive key={index} />
+            }
+            {index == MOCK_STORY_CLEAR &&
+              <StoryCard title={item.title} image={DEFALT_IMAGE} recipe={item.recipe} isActive key={index} />
+            }
+            {index > MOCK_STORY_CLEAR &&
+              <StoryCard title={item.title} image={DEFALT_IMAGE} recipe={item.recipe} isActive={false} key={index} />
+            }
+          </>
         );
       })}
     </>
