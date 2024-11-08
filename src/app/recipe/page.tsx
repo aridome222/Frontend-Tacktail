@@ -1,4 +1,5 @@
 import type React from 'react';
+import Image from 'next/image';
 import { RangeSlider } from './_components/RangeSlider';
 import styles from './recipe.module.css'; // CSSモジュールのインポート
 
@@ -8,7 +9,7 @@ const Recipe: React.FC = () => {
       <div className={styles.page}>
         {/* カクテル画像 */}
         <div className={styles.imageContainer}>
-          <img src='/images/react.png' alt='カクテル画像' />
+          <Image src='/images/react.png' width={150} height={150} alt='カクテル画像' />
         </div>
 
         {/* カクテル情報 */}
