@@ -13,9 +13,7 @@ const Login = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // TODO: ログイン処理を実装
-    console.log('Logged in with:', username, password);
     if (username && password) {
-      console.log('Logged in with:', username, password);
       setError(''); // ログインが成功した場合はエラーをクリア
     } else {
       setError('ユーザー名とパスワードを入力してください');
