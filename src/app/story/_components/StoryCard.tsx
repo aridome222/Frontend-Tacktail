@@ -5,7 +5,7 @@ import type React from 'react';
 import Link from 'next/link';
 
 type StoryCardProps = {
-  title: string;
+  cocktail: string;
   image: string;
   recipe: string[];
   day: number;
@@ -25,7 +25,7 @@ export const StoryCard: React.FC<StoryCardProps> = (props) => {
         <CocktailImage backgroundImagePath={props.image} cocktailName={`${props.day}日目`} />
       </div>
       <div className={styles.text}>
-        <p className={styles.description}>{props.title}</p>
+        <p className={styles.description}>{`${props.cocktail}を作ってみよう`}</p>
         <div className={styles.listParent}>
           <ul className={styles.list}>
             {props.recipe.map((material, index) => {
