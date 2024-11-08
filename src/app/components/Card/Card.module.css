@@ -1,28 +1,53 @@
-.parent {
-  background-color: gray;
+.card {
+  position: relative;
+  margin-bottom: 5px;
+  padding: 7px;
+  background-color: #000;
+  border-radius: 5px;
+  border-top: solid 2px var(--gold);
+  border-bottom: solid 2px var(--gold);
   display: flex;
-  align-items: center;
-  justify-content: center;
-  justify-items: center;
-  margin: auto;
-  width: 90%;
-  padding: 10px;
-  gap: 10px;
-  border-radius: 15px;
+  justify-content: space-between;
+  text-decoration: none;
 }
 
-.mediaBody {
-  max-width: 60%;
-  flex: 1;
+.imageParent {
+  position: relative;
 }
 
-.heading {
-  padding-bottom: 10px;
-  font-size: 25px;
+.image {
+  border-radius: 5px;
+}
+
+.text {
+  width: 100%;
+  padding: 0 10px;
   font-weight: bold;
+  color: var(--gold);
 }
 
-.contents {
-  padding-top: 4px;
-  font-size: 15px;
+.description {
+  color: #eee;
+  margin-bottom: 0.5em;
+  font-size: 16px;
+}
+
+.listParent {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.list {
+  padding-left: 1em;
+  font-size: 14px;
+  width: fit-content;
+}
+
+.material {
+  width: fit-content;
+}
+
+.etc {
+  margin-left: 1em;
 }
