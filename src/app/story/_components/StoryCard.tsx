@@ -1,13 +1,13 @@
-import Image from 'next/image';
-import styles from './StoryCard.module.css';
 import { CocktailImage } from '@/app/components/CocktailImage';
-import type React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
+import type React from 'react';
+import styles from './StoryCard.module.css';
 
 type StoryCardProps = {
   cocktail: string;
   image: string;
-  recipe: string[];
+  materials: string[];
   day: number;
   isActive: boolean;
   isClear: boolean;
@@ -28,7 +28,7 @@ export const StoryCard: React.FC<StoryCardProps> = (props) => {
         <p className={styles.description}>{`${props.cocktail}を作ってみよう`}</p>
         <div className={styles.listParent}>
           <ul className={styles.list}>
-            {props.recipe.map((material, index) => {
+            {props.materials.map((material, index) => {
               return (
                 index < MAX_MATERIAL && (
                   <li className={styles.material} key={material}>
@@ -38,7 +38,7 @@ export const StoryCard: React.FC<StoryCardProps> = (props) => {
               );
             })}
           </ul>
-          {props.recipe.length >= MAX_MATERIAL && <span className={styles.etc}>etc</span>}
+          {props.materials.length >= MAX_MATERIAL && <span className={styles.etc}>etc</span>}
         </div>
       </div>
       {props.isClear && (

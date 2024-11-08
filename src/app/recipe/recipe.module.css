@@ -1,0 +1,27 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.headline {
+  margin-top: 1rem;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.ingredient {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

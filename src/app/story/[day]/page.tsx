@@ -1,8 +1,8 @@
+import { Card } from '@/app/components/Card';
+import Link from 'next/link';
 import type React from 'react';
 import { StoryTop } from '../_components/StoryTop';
 import styles from './StoryDay.module.css';
-import { Card } from '@/app/components/Card';
-import Link from 'next/link';
 
 const StoryDay: React.FC = () => {
   // day指定でレシピを取得

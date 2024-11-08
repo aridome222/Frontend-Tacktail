@@ -1,0 +1,37 @@
+.rangeSliderContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.rangeSliderItem {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.25rem; /* ラベルとスライダーの間にスペースを追加 */
+}
+
+.rectangleWhite {
+  background-color: white;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+.rectangleGold {
+  /* background-color: #faea71; */
+  background-color: rgb(0, 251, 255);
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+.active {
+  pointer-events: all;
+}
+
+.deactive {
+  pointer-events: none;
+}
