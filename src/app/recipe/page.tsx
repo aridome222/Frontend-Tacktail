@@ -6,9 +6,6 @@ const Recipe: React.FC = () => {
   return (
     <>
       <div className={styles.page}>
-        {/* ページタイトル */}
-        <h1>カクテルレシピページ</h1>
-
         {/* カクテル画像 */}
         <div className={styles.imageContainer}>
           <img src="/images/react.png" alt="カクテル画像" />
