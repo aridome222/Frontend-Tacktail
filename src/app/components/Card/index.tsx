@@ -1,7 +1,7 @@
-import type React from 'react';
-import { CocktailImage } from '../CocktailImage';
-import styles from './Card.module.css';
-import Link from 'next/link';
+import type React from "react";
+import { CocktailImage } from "../CocktailImage";
+import styles from "./Card.module.css";
+import Link from "next/link";
 
 type CardProps = {
   id: number;
@@ -10,7 +10,12 @@ type CardProps = {
   contents: string[];
 };
 
-export const Card: React.FC<CardProps> = ({ id, image, cocktail, contents }: CardProps) => {
+export const Card: React.FC<CardProps> = ({
+  id,
+  image,
+  cocktail,
+  contents,
+}: CardProps) => {
   const MAX_MATERIAL = 3;
 
   return (
@@ -32,7 +37,9 @@ export const Card: React.FC<CardProps> = ({ id, image, cocktail, contents }: Car
               );
             })}
           </ul>
-          {contents.length >= MAX_MATERIAL && <span className={styles.etc}>etc</span>}
+          {contents.length >= MAX_MATERIAL && (
+            <span className={styles.etc}>etc</span>
+          )}
         </div>
       </div>
     </Link>

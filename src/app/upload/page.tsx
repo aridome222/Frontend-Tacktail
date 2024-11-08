@@ -6,7 +6,7 @@ export default function Upload() {
       <h1>カクテル投稿</h1>
       <form className={styles.form}>
         {/* 画像フィールド */}
-        <label>カクテルの画像:</label>
+        <p>カクテルの画像:</p>
 
         {/* カクテル名フィールド */}
         <label>

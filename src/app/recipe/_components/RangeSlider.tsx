@@ -1,15 +1,13 @@
-"use client";
+'use client';
 
-import type React from "react";
-import { useState } from "react";
-import styles from "./RangeSlider.module.css";
+import type React from 'react';
+import { useState } from 'react';
+import styles from './RangeSlider.module.css';
 
 type RangeSliderProps = { isActive: boolean; value?: number };
 
 export const RangeSlider: React.FC<RangeSliderProps> = (props) => {
-  const [selectedIndex, setSelectedIndex] = useState<number>(
-    props.value ? props.value : -1
-  );
+  const [selectedIndex, setSelectedIndex] = useState<number>(props.value ? props.value : -1);
 
   // 長方形のクリック処理
   const handleRectangleClick = (index: number) => {
@@ -24,13 +22,9 @@ export const RangeSlider: React.FC<RangeSliderProps> = (props) => {
             <button
               // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
               key={index}
-              type="button"
+              type='button'
               className={`
-                ${
-                  index + 1 <= selectedIndex
-                    ? styles.rectangleGold
-                    : styles.rectangleWhite
-                }
+                ${index + 1 <= selectedIndex ? styles.rectangleGold : styles.rectangleWhite}
                 ${props.isActive ? styles.active : styles.deactive}`}
               onClick={() => handleRectangleClick(index + 1)}
             >
