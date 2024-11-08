@@ -19,8 +19,9 @@ const StoryDay: React.FC = () => {
         <div>
           <p className={styles.text}>以下の材料を揃えよう</p>
           <ul className={styles.list}>
-            <li>ウォッカ</li>
-            <li>ジンジャーエール</li>
+            {MOCK_COCKTAIL.recipe.map((item) => {
+              return <li key={item}>{item}</li>;
+            })}
           </ul>
         </div>
       </section>
