@@ -1,5 +1,5 @@
-import type React from 'react';
 import Image from 'next/image';
+import type React from 'react';
 import { RangeSlider } from './_components/RangeSlider';
 import styles from './recipe.module.css'; // CSSモジュールのインポート
 
