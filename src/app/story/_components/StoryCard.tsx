@@ -1,7 +1,8 @@
-import { CocktailImage } from '@/app/components/CocktailImage';
-import Image from 'next/image';
-import type React from 'react';
-import styles from './StoryCard.module.css';
+import { CocktailImage } from "@/app/components/CocktailImage";
+import Image from "next/image";
+import Link from "next/link";
+import type React from "react";
+import styles from "./StoryCard.module.css";
 
 type StoryCardProps = {
   title: string;
@@ -16,9 +17,17 @@ export const StoryCard: React.FC<StoryCardProps> = (props) => {
   const MAX_MATERIAL = 3;
 
   return (
-    <div className={`${styles.card} ${props.isActive ? styles.active : styles.deactive}`}>
+    <Link
+      href={`/story/${props.day}`}
+      className={`${styles.card} ${
+        props.isActive ? styles.active : styles.deactive
+      }`}
+    >
       <div className={styles.imageParent}>
-        <CocktailImage backgroundImagePath={props.image} cocktailName={`${props.day}日目`} />
+        <CocktailImage
+          backgroundImagePath={props.image}
+          cocktailName={`${props.day}日目`}
+        />
       </div>
       <div className={styles.text}>
         <p className={styles.description}>{props.title}</p>
@@ -34,21 +43,23 @@ export const StoryCard: React.FC<StoryCardProps> = (props) => {
               );
             })}
           </ul>
-          {props.recipe.length >= MAX_MATERIAL && <span className={styles.etc}>etc</span>}
+          {props.recipe.length >= MAX_MATERIAL && (
+            <span className={styles.etc}>etc</span>
+          )}
         </div>
       </div>
       {props.isClear && (
         <div className={styles.clearParent}>
           <Image
             className={styles.clear}
-            src='/images/clear_gold.png'
-            alt='clear image'
+            src="/images/clear_gold.png"
+            alt="clear image"
             width={100}
             height={30}
             priority
           />
         </div>
       )}
-    </div>
+    </Link>
   );
 };
