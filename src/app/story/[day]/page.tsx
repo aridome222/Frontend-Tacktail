@@ -2,6 +2,7 @@ import type React from 'react';
 import { StoryTop } from '../_components/StoryTop';
 import styles from './StoryDay.module.css';
 import { Card } from '@/app/components/Card';
+import Link from 'next/link';
 
 const StoryDay: React.FC = () => {
   // day指定でレシピを取得
@@ -36,11 +37,11 @@ const StoryDay: React.FC = () => {
         />
       </section>
       <section className={styles.section}>
-        <p className={styles.text}>３．できたら作成完了ボタンを押そう</p>
+        <p className={styles.text}>３．作成完了ボタンを押そう</p>
         <div className={styles.buttonContainer}>
-          <button type='button' className={styles.button}>
+          <Link href='/story' className={styles.button}>
             作成完了
-          </button>
+          </Link>
         </div>
       </section>
     </>
