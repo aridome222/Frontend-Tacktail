@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import styles from './Login.module.css';
 
-export default function CocktailBarLogin() {
+const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -53,4 +53,6 @@ export default function CocktailBarLogin() {
       </div>
     </div>
   );
-}
+};
+
+export default Login;
