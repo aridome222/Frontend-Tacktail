@@ -16,14 +16,19 @@ const StoryDay: React.FC = () => {
     <>
       <StoryTop />
       <section className={styles.section}>
-      <div>
+        <div>
           <p className={styles.text}>以下の材料を揃えよう</p>
           <ul className={styles.list}>
-          <li>ウォッカ</li>
-          <li>ジンジャーエール</li>
-        </ul>
-      </div>
-    </section>
+            <li>ウォッカ</li>
+            <li>ジンジャーエール</li>
+          </ul>
+        </div>
+      </section>
+      <section>
+        <p className={styles.text}>以下のレシピを作成しよう</p>
+        <Card heading={MOCK_COCKTAIL.cocktail} contents={MOCK_COCKTAIL.recipe} />
+      </section>
+    </>
   );
 };
 

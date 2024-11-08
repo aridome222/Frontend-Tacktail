@@ -1,0 +1,14 @@
+.section {
+  padding: 15px 0;
+}
+
+.text {
+  color: #eee;
+  font-size: 18px;
+  padding-bottom: 0.5em;
+}
+
+.list {
+  padding-left: 1em;
+  width: fit-content;
+}
