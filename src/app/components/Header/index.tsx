@@ -7,14 +7,11 @@ export const Header: React.FC = () => {
     <>
       <header className={styles.header}>
         <div className={styles.container}>
-          <Link href='/' className={styles.link}>
+          <Link href='/story' className={styles.link}>
             Story
           </Link>
-          <Link href='/' className={styles.link}>
+          <Link href='/recipes' className={styles.link}>
             Cocktails
-          </Link>
-          <Link href='/' className={styles.link}>
-            Post
           </Link>
         </div>
       </header>
