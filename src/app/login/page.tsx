@@ -27,7 +27,7 @@ const Login = () => {
       <div className={styles.formContainer}>
         <div className={styles.header}>
           <h1 className={styles.title}>ご来店ありがとうございます</h1>
-          <p className={styles.subtitle}>ユーザー名とパスワードを書いてお待ち下さい</p>
+          <p className={styles.subtitle}>ユーザー名とパスワードを記入し、お待ち下さい</p>
         </div>
         <div className={styles.errorContainer}>
           {error && <p className={styles.error}>{error}</p>}
@@ -41,8 +41,6 @@ const Login = () => {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
-          </div>
-          <div className={styles.inputParent}>
             <input
               id='password'
               type='password'
@@ -52,9 +50,14 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <Link href='/login' className={styles.forgotPassword}>
-            パスワードを忘れた方はこちら
-          </Link>
+          <div className={styles.linksContainer}>
+            <Link href='/' className={styles.forgotPasswordLink}>
+              パスワードを忘れた方はこちら
+            </Link>
+            <Link href='/signup' className={styles.signupLink}>
+              はじめてのご来店はこちら
+            </Link>
+          </div>
           <button type='submit' className={styles.button}>
             入店する
           </button>
