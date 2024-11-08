@@ -1,11 +1,24 @@
 import type React from 'react';
+import { StoryTop } from '../_components/StoryTop';
+import styles from './StoryDay.module.css';
+import { Card } from '@/app/components/Card';
 
 const StoryDay: React.FC = () => {
+  // day指定でレシピを取得
+  const MOCK_COCKTAIL = {
+    cocktail: 'ジンバック',
+    image: '/images/cocktail/gin_buck.jpg',
+    recipe: ['ジン', 'ジンジャーエール'],
+    day: 3,
+  };
+
   return (
-    <section>
+    <>
+      <StoryTop />
+      <section className={styles.section}>
       <div>
-        <h2>以下の材料を揃えよう！</h2>
-        <ul>
+          <p className={styles.text}>以下の材料を揃えよう</p>
+          <ul className={styles.list}>
           <li>ウォッカ</li>
           <li>ジンジャーエール</li>
         </ul>
