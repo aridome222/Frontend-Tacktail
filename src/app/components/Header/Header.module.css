@@ -1,0 +1,18 @@
+.header {
+  background: black;
+  border-bottom: solid 1px var(--gold);
+  padding: 10px;
+  height: 36px;
+}
+
+.container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 15px;
+}
+
+.link {
+  color: var(--gold);
+  text-decoration: none;
+}
