@@ -1,5 +1,5 @@
-import type React from 'react';
 import Image from 'next/image';
+import type React from 'react';
 import styles from './StoryTop.module.css';
 
 export const StoryTop: React.FC = () => {

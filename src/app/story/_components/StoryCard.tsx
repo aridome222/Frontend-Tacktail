@@ -1,7 +1,7 @@
-import Image from 'next/image';
-import styles from './StoryCard.module.css';
 import { CocktailImage } from '@/app/components/CocktailImage';
+import Image from 'next/image';
 import type React from 'react';
+import styles from './StoryCard.module.css';
 
 type StoryCardProps = {
   title: string;

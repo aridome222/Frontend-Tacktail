@@ -1,8 +1,8 @@
 'use client';
 
+import Link from 'next/link';
 import type React from 'react';
 import { useState } from 'react';
-import Link from 'next/link';
 import styles from './Login.module.css';
 
 const Login = () => {
