@@ -7,13 +7,8 @@
 
 .rangeSliderItem {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   gap: 0.25rem; /* ラベルとスライダーの間にスペースを追加 */
-}
-
-.rectangleBlock {
-  display: flex;
-  gap: 0.5rem;
 }
 
 .rectangleWhite {

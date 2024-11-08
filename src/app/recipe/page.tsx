@@ -24,8 +24,17 @@ const Recipe: React.FC = () => {
         </div>
 
         {/* 材料 */}
-        <h3 className={styles.headline}>材料と比率</h3>
-        <RangeSlider />
+        <h3 className={styles.headline}>材料</h3>
+        <div className={styles.ingredient}>
+          <div>
+            <p>ウォッカ</p>
+            <RangeSlider />
+          </div>
+          <div>
+            <p>オレンジジュース</p>
+            <RangeSlider />
+          </div>
+        </div>
       </div>
     </>
   );
