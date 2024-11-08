@@ -18,7 +18,7 @@ const StoryDay: React.FC = () => {
       <StoryTop />
       <section className={styles.section}>
         <div>
-          <p className={styles.text}>以下の材料を揃えよう</p>
+          <p className={styles.text}>１．以下の材料を揃えよう</p>
           <ul className={styles.list}>
             {MOCK_COCKTAIL.recipe.map((item) => {
               return <li key={item}>{item}</li>;
@@ -26,14 +26,22 @@ const StoryDay: React.FC = () => {
           </ul>
         </div>
       </section>
-      <section>
-        <p className={styles.text}>以下のレシピを作成しよう</p>
+      <section className={styles.section}>
+        <p className={styles.text}>２．以下のレシピを作成しよう</p>
         <Card
           id={MOCK_COCKTAIL.id}
           image={MOCK_COCKTAIL.image}
           cocktail={MOCK_COCKTAIL.cocktail}
           contents={MOCK_COCKTAIL.recipe}
         />
+      </section>
+      <section className={styles.section}>
+        <p className={styles.text}>３．できたら作成完了ボタンを押そう</p>
+        <div className={styles.buttonContainer}>
+          <button type='button' className={styles.button}>
+            作成完了
+          </button>
+        </div>
       </section>
     </>
   );
