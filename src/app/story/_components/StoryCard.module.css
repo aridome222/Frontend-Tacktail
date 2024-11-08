@@ -8,6 +8,7 @@
   border-bottom: solid 2px var(--gold);
   display: flex;
   justify-content: space-between;
+  text-decoration: none;
 }
 
 .active {
@@ -30,6 +31,7 @@
   width: 100%;
   padding: 0 10px;
   font-weight: bold;
+  color: var(--gold);
 }
 
 .description {
