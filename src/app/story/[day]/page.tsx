@@ -6,6 +6,7 @@ import { Card } from '@/app/components/Card';
 const StoryDay: React.FC = () => {
   // day指定でレシピを取得
   const MOCK_COCKTAIL = {
+    id: 0,
     cocktail: 'ジンバック',
     image: '/images/cocktail/gin_buck.jpg',
     recipe: ['ジン', 'ジンジャーエール'],
@@ -27,7 +28,12 @@ const StoryDay: React.FC = () => {
       </section>
       <section>
         <p className={styles.text}>以下のレシピを作成しよう</p>
-        <Card heading={MOCK_COCKTAIL.cocktail} contents={MOCK_COCKTAIL.recipe} />
+        <Card
+          id={MOCK_COCKTAIL.id}
+          image={MOCK_COCKTAIL.image}
+          cocktail={MOCK_COCKTAIL.cocktail}
+          contents={MOCK_COCKTAIL.recipe}
+        />
       </section>
     </>
   );
