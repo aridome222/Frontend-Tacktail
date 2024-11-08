@@ -5,17 +5,20 @@ import styles from './Recipes.module.css';
 const recipesData = [
   {
     id: 0,
-    heading: 'モヒート',
+    image: '/images/cocktail/screw_driver.jpg',
+    cocktail: 'モヒート',
     contents: ['ラム', 'ミント', 'ライム', '炭酸水'],
   },
   {
     id: 1,
-    heading: 'ジンバック',
+    image: '/images/cocktail/screw_driver.jpg',
+    cocktail: 'ジンバック',
     contents: ['ジン', 'レモン', 'ジンジャーエール'],
   },
   {
     id: 2,
-    heading: 'ロングアイランドアイスティー',
+    image: '/images/cocktail/screw_driver.jpg',
+    cocktail: 'ロングアイランドアイスティー',
     contents: ['ジン', 'ウォッカ', 'ホワイトラム', 'テキーラ', 'コアントロー', 'コーラ'],
   },
 ];
@@ -27,7 +30,13 @@ const Recipes = () => {
         <h1 className={styles.h1}>レシピ一覧</h1>
         <div className={styles.cardList}>
           {recipesData.map((recipe) => (
-            <Card key={recipe.id} heading={recipe.heading} contents={recipe.contents} />
+            <Card
+              key={recipe.id}
+              id={recipe.id}
+              image={recipe.image}
+              cocktail={recipe.cocktail}
+              contents={recipe.contents}
+            />
           ))}
         </div>
       </div>

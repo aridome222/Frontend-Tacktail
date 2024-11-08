@@ -1,10 +1,11 @@
-import { CocktailImage } from '@/app/components/CocktailImage';
 import Image from 'next/image';
-import type React from 'react';
 import styles from './StoryCard.module.css';
+import { CocktailImage } from '@/app/components/CocktailImage';
+import type React from 'react';
+import Link from 'next/link';
 
 type StoryCardProps = {
-  title: string;
+  cocktail: string;
   image: string;
   recipe: string[];
   day: number;
@@ -16,12 +17,15 @@ export const StoryCard: React.FC<StoryCardProps> = (props) => {
   const MAX_MATERIAL = 3;
 
   return (
-    <div className={`${styles.card} ${props.isActive ? styles.active : styles.deactive}`}>
+    <Link
+      href={`/story/${props.day}`}
+      className={`${styles.card} ${props.isActive ? styles.active : styles.deactive}`}
+    >
       <div className={styles.imageParent}>
         <CocktailImage backgroundImagePath={props.image} cocktailName={`${props.day}日目`} />
       </div>
       <div className={styles.text}>
-        <p className={styles.description}>{props.title}</p>
+        <p className={styles.description}>{`${props.cocktail}を作ってみよう`}</p>
         <div className={styles.listParent}>
           <ul className={styles.list}>
             {props.recipe.map((material, index) => {
@@ -49,6 +53,6 @@ export const StoryCard: React.FC<StoryCardProps> = (props) => {
           />
         </div>
       )}
-    </div>
+    </Link>
   );
 };

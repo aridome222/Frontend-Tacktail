@@ -1,26 +1,40 @@
 import type React from 'react';
 import { CocktailImage } from '../CocktailImage';
 import styles from './Card.module.css';
+import Link from 'next/link';
 
 type CardProps = {
-  heading: string;
+  id: number;
+  cocktail: string;
+  image: string;
   contents: string[];
 };
 
-export const Card: React.FC<CardProps> = ({ heading, contents }: CardProps) => {
+export const Card: React.FC<CardProps> = ({ id, image, cocktail, contents }: CardProps) => {
+  const MAX_MATERIAL = 3;
+
   return (
-    <>
-      <div className={styles.parent}>
-        <CocktailImage backgroundImagePath='/images/robot_and_hogeta.jpeg' cocktailName={heading} />
-        <div className={styles.mediaBody}>
-          <h1 className={styles.heading}>{heading}</h1>
-          {contents.map((item) => (
-            <ul className={styles.contents} key={item}>
-              {item}
-            </ul>
-          ))}
+    <Link href={`/recipe/${id}`} className={styles.card}>
+      <div className={styles.imageParent}>
+        <CocktailImage backgroundImagePath={image} cocktailName={cocktail} />
+      </div>
+      <div className={styles.text}>
+        <p className={styles.description}>{cocktail}</p>
+        <div className={styles.listParent}>
+          <ul className={styles.list}>
+            {contents.map((item, index) => {
+              return (
+                index < MAX_MATERIAL && (
+                  <li className={styles.material} key={item}>
+                    {item}
+                  </li>
+                )
+              );
+            })}
+          </ul>
+          {contents.length >= MAX_MATERIAL && <span className={styles.etc}>etc</span>}
         </div>
       </div>
-    </>
+    </Link>
   );
 };
