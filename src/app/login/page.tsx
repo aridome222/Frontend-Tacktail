@@ -8,11 +8,18 @@ import styles from './Login.module.css';
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // TODO: ログイン処理を実装
     console.log('Logged in with:', username, password);
+    if (username && password) {
+      console.log('Logged in with:', username, password);
+      setError(''); // ログインが成功した場合はエラーをクリア
+    } else {
+      setError('ユーザー名とパスワードを入力してください');
+    }
   };
 
   return (
@@ -22,11 +29,13 @@ const Login = () => {
           <h1 className={styles.title}>ご来店ありがとうございます</h1>
           <p className={styles.subtitle}>ユーザー名とパスワードを書いてお待ち下さい</p>
         </div>
+        <div className={styles.errorContainer}>
+          {error && <p className={styles.error}>{error}</p>}
+        </div>
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.inputParent}>
             <input
               id='username'
-              required
               className={styles.input}
               placeholder='ユーザー名'
               value={username}
@@ -36,7 +45,7 @@ const Login = () => {
           <div className={styles.inputParent}>
             <input
               id='password'
-              required
+              type='password'
               className={styles.input}
               placeholder='パスワード'
               value={password}
