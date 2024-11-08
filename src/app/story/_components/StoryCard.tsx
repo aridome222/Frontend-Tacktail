@@ -2,6 +2,7 @@ import Image from 'next/image';
 import styles from './StoryCard.module.css';
 import { CocktailImage } from '@/app/components/CocktailImage';
 import type React from 'react';
+import Link from 'next/link';
 
 type StoryCardProps = {
   title: string;
@@ -16,7 +17,10 @@ export const StoryCard: React.FC<StoryCardProps> = (props) => {
   const MAX_MATERIAL = 3;
 
   return (
-    <div className={`${styles.card} ${props.isActive ? styles.active : styles.deactive}`}>
+    <Link
+      href={`/story/${props.day}`}
+      className={`${styles.card} ${props.isActive ? styles.active : styles.deactive}`}
+    >
       <div className={styles.imageParent}>
         <CocktailImage backgroundImagePath={props.image} cocktailName={`${props.day}日目`} />
       </div>
@@ -49,6 +53,6 @@ export const StoryCard: React.FC<StoryCardProps> = (props) => {
           />
         </div>
       )}
-    </div>
+    </Link>
   );
 };
