@@ -17,9 +17,9 @@ const Recipe: React.FC = () => {
         {/* カクテル情報 */}
         <h2 className={styles.headline}>モスコミュール</h2>
         <div className={styles.text}>
-          <p>費用目安: 500円程度</p>
           <p>
-            モスコミュールはウォッカベースのカクテルで、ジンジャーエールとライムの爽やかな味わいが特徴です。
+            ウォッカベースのカクテルで、ジンジャーエールとライムの爽やかな味わいが特徴です。
+            お好みでカットライム、もしくは、ライム果汁を入れるとより爽やかな味わいになります。
           </p>
         </div>
 
@@ -28,11 +28,11 @@ const Recipe: React.FC = () => {
         <div className={styles.ingredient}>
           <div>
             <p>ウォッカ</p>
-            <RangeSlider />
+            <RangeSlider isActive={false} value={2} />
           </div>
           <div>
             <p>オレンジジュース</p>
-            <RangeSlider />
+            <RangeSlider isActive={false} value={8} />
           </div>
         </div>
       </div>

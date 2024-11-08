@@ -4,8 +4,12 @@ import type React from "react";
 import { useState } from "react";
 import styles from "./RangeSlider.module.css";
 
-export const RangeSlider: React.FC = () => {
-  const [selectedIndex, setSelectedIndex] = useState<number>(-1);
+type RangeSliderProps = { isActive: boolean; value?: number };
+
+export const RangeSlider: React.FC<RangeSliderProps> = (props) => {
+  const [selectedIndex, setSelectedIndex] = useState<number>(
+    props.value ? props.value : -1
+  );
 
   // 長方形のクリック処理
   const handleRectangleClick = (index: number) => {
@@ -21,12 +25,14 @@ export const RangeSlider: React.FC = () => {
               // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
               key={index}
               type="button"
-              className={
-                index <= selectedIndex
-                  ? styles.rectangleGold
-                  : styles.rectangleWhite
-              }
-              onClick={() => handleRectangleClick(index)}
+              className={`
+                ${
+                  index + 1 <= selectedIndex
+                    ? styles.rectangleGold
+                    : styles.rectangleWhite
+                }
+                ${props.isActive ? styles.active : styles.deactive}`}
+              onClick={() => handleRectangleClick(index + 1)}
             >
               {}
             </button>
