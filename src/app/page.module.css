@@ -1,4 +1,10 @@
 .text {
-  padding-top: 100px;
+  margin: 20px 0px 20px 0px;
   text-align: center;
+}
+
+.cardList {
+  display: flex;
+  flex-direction: column;
+  /* gap: 2rem; */
 }
