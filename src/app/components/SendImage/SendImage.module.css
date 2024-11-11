@@ -1,0 +1,22 @@
+.sendImageContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
+
+.fileInput {
+  display: none;
+}
+
+.button {
+  padding: 0.75rem 5rem;
+  background-color: var(--barn-red);
+  color: #eee;
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
