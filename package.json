@@ -11,6 +11,7 @@
     "check": "biome check --diagnostic-level=error *"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.46.1",
     "firebase": "^11.0.1",
     "next": "15.0.2",
     "react": "19.0.0-rc-02c0e824-20241028",
@@ -18,7 +19,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@types/node": "^20",
+    "@types/node": "^20.17.6",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
