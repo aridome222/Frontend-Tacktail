@@ -64,8 +64,38 @@ export default function Home() {
   return (
     <>
       <div className={styles.page}>
-        <h1 className={styles.h1}>トップページ</h1>
-        <h2 className={styles.h2}>オススメのカクテル</h2>
+        {/* トップページの画像 */}
+        <div className={styles.imageContainer}>
+          <Image
+            src="/images/cocktail/topPage_bar.jpg"
+            alt="topPage_bar"
+            fill
+            priority
+          ></Image>
+          <p className={styles.overlayText}>Tacktailへようこそ</p>
+        </div>
+
+        {/* WEBアプリTacktailの説明 */}
+        <h2 className={styles.margin_y}>
+          Tacktail<span className={styles.text}>とは？</span>
+        </h2>
+        <div className={styles.description}>
+          <div className={styles.text_medium}>
+            <ul>
+              <li>バーは好きだけど、時間やお金がかかる…</li>
+              <li>自宅でカクテル作ってみたいけど、難しそう…</li>
+            </ul>
+          </div>
+          <div className={styles.margin_y}>
+            <p className={styles.text_larger}>そんなあなたに！</p>
+            <p>
+              Tacktailはカクテル選びの手間を減らし、ゲーム感覚でカクテルの物知りになれます！
+            </p>
+            <p>
+              自宅で楽しみながら、自分だけのカクテルコレクションを作ってみましょう！
+            </p>
+          </div>
+        </div>
 
         {/* 初心者向けと上級者向けにレシピを表示 */}
         <div className={styles.categoryList}>

@@ -1,10 +1,28 @@
-.h1 {
+.center_text {
   margin: 20px 0px 20px 0px;
   text-align: center;
 }
 
-.h2 {
-  margin: 20px 0px 20px 0px;
+.margin_y {
+  margin: 10px 0px 10px 0px;
+}
+
+.margin_bottom {
+  margin-bottom: 10px;
+}
+
+.text_medium {
+  font-size: medium;
+  margin: 0.5rem;
+}
+
+.text_larger {
+  font-size: larger;
+  margin: 0.5rem;
+}
+
+.description {
+  margin-bottom: 1rem;
 }
 
 .categoryList {
