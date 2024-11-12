@@ -38,7 +38,6 @@ export const downloadStorage = async ({
 
   // ストレージにファイルが存在する場合は、ダウロードしたファイルの一時的な URL を返す
   if (data) {
-    console.log(URL.createObjectURL(data));
     return URL.createObjectURL(data);
   }
 
