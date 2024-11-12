@@ -22,8 +22,8 @@ const Login = () => {
       return;
     }
 
-    const response = await login(username, password);
-    if (response) {
+    const isLoginSucceeded = await login(username, password);
+    if (isLoginSucceeded) {
       router.push('/');
     } else {
       setError('ログインに失敗しました。ユーザー名とパスワードを確認してください。');

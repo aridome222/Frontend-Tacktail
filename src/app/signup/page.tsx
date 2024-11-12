@@ -22,8 +22,8 @@ const Signup = () => {
       return;
     }
 
-    const response = await signup(username, password);
-    if (response) {
+    const isSignupSucceeded = await signup(username, password);
+    if (isSignupSucceeded) {
       router.push('/');
     } else {
       setError('ユーザー登録に失敗しました。');
