@@ -1,11 +1,12 @@
 'use client';
 
+import { login } from '@/lib/auth';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import type React from 'react';
 import { useState } from 'react';
-import axios from 'axios';
+import type { FormEvent } from 'react';
 import styles from './Login.module.css';
-import { useRouter } from 'next/navigation';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -13,24 +14,19 @@ const Login = () => {
   const [error, setError] = useState('');
   const router = useRouter();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    // TODO: ログイン処理を実装
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
     if (!username || !password) {
-      setError('ユーザー名とパスワードを入力してください');
+      setError('ユーザー名とパスワードを入力してください。');
       return;
     }
 
-    try {
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/login`, {
-        name: username,
-        password: password,
-      });
-
-      // 初期ページにリダイレクト
+    const response = await login(username, password);
+    if (response) {
       router.push('/');
-    } catch (error) {
-      setError('ログインに失敗しました。ユーザー名とパスワードを確認してください');
+    } else {
+      setError('ログインに失敗しました。ユーザー名とパスワードを確認してください。');
     }
   };
 
