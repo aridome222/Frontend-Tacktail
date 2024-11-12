@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { GoogleAuthProvider, getAuth } from 'firebase/auth/web-extension';
+import { GoogleAuthProvider } from 'firebase/auth/web-extension';
 import { getStorage } from 'firebase/storage';
 
 // Your web app's Firebase configuration
