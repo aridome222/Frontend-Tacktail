@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useRef } from 'react';
-import type React from 'react';
 import Image from 'next/image';
-import { uploadStorage } from '../../../lib/supabase/storage';
+import { useEffect, useRef, useState } from 'react';
+import type React from 'react';
+import { downloadStorage, uploadStorage } from '../../../lib/supabase/storage';
 import supabase from '../../../utils/supabase';
 import styles from './SendImage.module.css';
 
@@ -13,16 +13,35 @@ type SendImageProps = {
 };
 
 export const SendImage = ({ cocktailId, username }: SendImageProps) => {
-  const [path, setPathName] = useState<string | undefined>();
+  const [imageUrl, setImageUrl] = useState<string>('/images/secret.jpg'); // 初期画像を secret.jpg
   const inputFileRef = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
+    // 画像をダウンロードして URL を設定
+    const fetchImage = async () => {
+      try {
+        const url = await downloadStorage({
+          bucketName: 'images',
+          cocktailId,
+          username,
+        });
+        if (url) {
+          setImageUrl(url); // 画像が存在する場合はその URL を設定
+        }
+      } catch (error) {
+        console.error('Error fetching image:', error);
+        setImageUrl('/images/secret.jpg'); // エラー時にはデフォルト画像を設定
+      }
+    };
+
+    fetchImage();
+  }, [cocktailId, username]);
 
   const handleUploadStorage = async (file: File) => {
     if (!file) return;
 
-    // const { data, error } = await supabase.storage.from('images').download(path);
-
     // 画像アップロード処理
-    const { path } = await uploadStorage({
+    const path = await uploadStorage({
       file,
       bucketName: 'images',
       cocktailId,
@@ -31,7 +50,10 @@ export const SendImage = ({ cocktailId, username }: SendImageProps) => {
 
     if (path) {
       const { data } = supabase.storage.from('images').getPublicUrl(path);
-      setPathName(data.publicUrl);
+
+      // URL が同じだと更新前の画像が表示されたままなので、タイムスタンプをつけて状態変数を更新
+      const imageUrlWithTimestamp = `${data.publicUrl}?t=${new Date().getTime()}`;
+      setImageUrl(imageUrlWithTimestamp);
     }
   };
 
@@ -56,11 +78,7 @@ export const SendImage = ({ cocktailId, username }: SendImageProps) => {
           ref={inputFileRef}
         />
         {/* 選択した画像がない場合は黒い背景で白いはてなの画像を出す */}
-        {path ? (
-          <Image src={path} alt='Uploaded image' width={300} height={300} />
-        ) : (
-          <Image src='/images/secret.jpg' alt='secret cocktail image' width={300} height={300} />
-        )}
+        <Image src={imageUrl} priority alt='Uploaded image' width={300} height={300} />
         <button
           id='fillSelect'
           type='button'
