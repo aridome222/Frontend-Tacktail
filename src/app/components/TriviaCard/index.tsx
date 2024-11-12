@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "./TriviaCard.module.css";
+import type React from 'react';
+import styles from './TriviaCard.module.css';
 
 type TriviaCardProps = {
   mainHeader: string;
@@ -7,11 +7,7 @@ type TriviaCardProps = {
   content: string;
 };
 
-export const TriviaCard: React.FC<TriviaCardProps> = ({
-  mainHeader,
-  subHeader,
-  content,
-}) => {
+export const TriviaCard: React.FC<TriviaCardProps> = ({ mainHeader, subHeader, content }) => {
   return (
     <div className={styles.triviaSection}>
       <div className={styles.triviaHeader}>
