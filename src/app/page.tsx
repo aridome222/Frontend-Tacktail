@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Card } from './components/Card';
 import styles from './page.module.css';
+
 // モックデータ
 const recipesData = [
   {
@@ -65,7 +66,12 @@ export default function Home() {
       <div className={styles.page}>
         {/* トップページの画像 */}
         <div className={styles.imageContainer}>
-          <Image src='/images/cocktail/topPage_bar.jpg' alt='topPage_bar' fill priority />
+          <Image
+            src="/images/cocktail/topPage_bar.jpg"
+            alt="topPage_bar"
+            fill
+            priority
+          />
           <p className={styles.overlayText}>Tacktailへようこそ</p>
         </div>
 
@@ -82,8 +88,12 @@ export default function Home() {
           </div>
           <div className={styles.margin_y}>
             <p className={styles.text_larger}>そんなあなたに！</p>
-            <p>Tacktailはカクテル選びの手間を減らし、ゲーム感覚でカクテルの物知りになれます！</p>
-            <p>自宅で楽しみながら、自分だけのカクテルコレクションを作ってみましょう！</p>
+            <p>
+              Tacktailはカクテル選びの手間を減らし、ゲーム感覚でカクテルの物知りになれます！
+            </p>
+            <p>
+              自宅で楽しみながら、自分だけのカクテルコレクションを作ってみましょう！
+            </p>
           </div>
         </div>
 
