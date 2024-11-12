@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Card } from './components/Card';
 import styles from './page.module.css';
+
 // モックデータ
 const recipesData = [
   {
