@@ -1,6 +1,7 @@
-'use client';
+// Server Actions の戻り値には Response 型が使えない
+'use server';
 
-export async function login(username: string, password: string): Promise<Response | null> {
+export async function login(username: string, password: string): Promise<boolean> {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/login`, {
       method: 'POST',
@@ -17,14 +18,14 @@ export async function login(username: string, password: string): Promise<Respons
       throw new Error('ログインに失敗しました');
     }
 
-    return response;
+    return true;
   } catch (error) {
     console.error(error);
-    return null;
+    return false;
   }
 }
 
-export async function signup(username: string, password: string): Promise<Response | null> {
+export async function signup(username: string, password: string): Promise<boolean> {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users`, {
       method: 'POST',
@@ -39,9 +40,9 @@ export async function signup(username: string, password: string): Promise<Respon
       throw new Error('ログインに失敗しました');
     }
 
-    return response;
+    return true;
   } catch (error) {
     console.error(error);
-    return null;
+    return false;
   }
 }
