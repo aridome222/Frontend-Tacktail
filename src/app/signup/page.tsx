@@ -3,20 +3,36 @@
 import Link from 'next/link';
 import type React from 'react';
 import { useState } from 'react';
+import axios from 'axios';
 import styles from './Signup.module.css';
+import { useRouter } from 'next/navigation';
 
 const Signup = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // TODO: ログイン処理を実装
-    if (username && password) {
-      setError(''); // ログインが成功した場合はエラーをクリア
-    } else {
-      setError('メールアドレスとパスワードを入力してください');
+    if (!username || !password) {
+      setError('ユーザー名とパスワードを入力してください');
+      return;
+    }
+
+    console.log(username, password);
+
+    try {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users`, {
+        name: username,
+        password: password,
+      });
+
+      // 初期ページにリダイレクト
+      router.push('/');
+    } catch (error) {
+      setError('ログインに失敗しました。ユーザー名とパスワードを確認してください');
     }
   };
 
