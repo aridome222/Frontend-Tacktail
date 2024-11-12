@@ -12,11 +12,18 @@ const StoryDay: React.FC = () => {
     image: '/images/cocktail/gin_buck.jpg',
     recipe: ['ジン', 'ジンジャーエール'],
     day: 3,
+    trivia: '〜ジンってなに？〜',
+    description:
+      '世界４大スピリッツと呼ばれる中の一つで、独特の鋭い切れ味や口の中に広がる香りを楽しめます。',
   };
 
   return (
     <>
       <StoryTop />
+      <section className={styles.section}>
+        <p className={styles.text}>0．カクテル豆知識 {MOCK_COCKTAIL.trivia}</p>
+        <p className={styles.text}>{MOCK_COCKTAIL.description}</p>
+      </section>
       <section className={styles.section}>
         <div>
           <p className={styles.text}>１．以下の材料を揃えよう</p>
