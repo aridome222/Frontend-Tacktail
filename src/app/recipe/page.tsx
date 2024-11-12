@@ -1,7 +1,7 @@
-import Image from 'next/image';
 import type React from 'react';
+import { SendImage } from '../components/SendImage/page';
 import { RangeSlider } from './_components/RangeSlider';
-import styles from './recipe.module.css'; // CSSモジュールのインポート
+import styles from './recipe.module.css';
 
 const Recipe: React.FC = () => {
   return (
@@ -9,7 +9,8 @@ const Recipe: React.FC = () => {
       <div className={styles.page}>
         {/* カクテル画像 */}
         <div className={styles.imageContainer}>
-          <Image src='/images/react.png' width={150} height={150} alt='カクテル画像' />
+          {/* TODO: cocktaiilId, username は動的ルーティングの番号とログイン済みユーザー名から取ってくるよう修正する */}
+          <SendImage cocktailId={0} username='testuser' />
         </div>
 
         {/* カクテル情報 */}
