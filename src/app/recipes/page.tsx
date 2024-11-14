@@ -1,5 +1,5 @@
 import { fetchRecipes } from '@/utils/api/fetchRecipes';
-import type { RecipeData } from '@/utils/type';
+import type { RecipeData } from '@/utils/types';
 import { Card } from '../components/Card';
 import styles from './Recipes.module.css';
 
