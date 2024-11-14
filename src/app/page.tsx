@@ -57,16 +57,16 @@ const Home = async () => {
   // 初級者にオススメのカクテル（IDが 0, 1, 4, 5, 7）
   const Beginner = [
     'モスコミュール',
-    'スクリュードライバー',
-    'ジンバック',
-    'オレンジブロッサム',
+    // 'スクリュードライバー',
+    // 'ジンバック',
+    // 'オレンジブロッサム',
     'カルーアミルク',
   ];
   // 上級者にオススメのカクテル（IDが 2, 3, 6, 8, 9）
   const Advanced = [
-    'テキーラサンライズ',
-    'ロングアイランドアイスティー',
-    'キューバリブレ',
+    // 'テキーラサンライズ',
+    // 'ロングアイランドアイスティー',
+    // 'キューバリブレ',
     'オーロラ',
     'XYZ',
   ];
@@ -75,20 +75,30 @@ const Home = async () => {
   const categories = [
     {
       name: 'まずは飲みやすい一杯から！初心者向け',
-      categoryData: recipesData.filter((recipe) => recipe.name in Beginner),
+      // categoryData: recipesData.filter((recipe) => recipe.name in Beginner),
+      categoryData: recipesData.filter((recipe) => Beginner.includes(recipe.name)),
     },
     {
       name: 'カクテルアワード優勝への道！上級者向け',
-      categoryData: recipesData.filter((recipe) => recipe.name in Advanced),
+      // categoryData: recipesData.filter((recipe) => recipe.name in Advanced),
+      categoryData: recipesData.filter((recipe) => Advanced.includes(recipe.name)),
     },
   ];
+
+  console.log(categories);
 
   return (
     <>
       <div className={styles.page}>
         {/* トップページの画像 */}
         <div className={styles.imageContainer}>
-          <Image src='/images/cocktail/topPage_bar.jpg' alt='topPage_bar' fill priority />
+          <Image
+            src='/images/cocktail/topPage_bar.jpg'
+            alt='topPage_bar'
+            fill
+            priority
+            className={styles.image}
+          />
           <p className={styles.overlayText}>Tacktailへようこそ</p>
         </div>
 
@@ -120,7 +130,7 @@ const Home = async () => {
                   <Card
                     key={recipe.id}
                     id={recipe.id}
-                    image={recipe.image}
+                    image={recipe.image === '' ? '/images/hatena.png' : recipe.image}
                     cocktail={recipe.name}
                     contents={recipe.materials.map((item) => {
                       return item.name;
