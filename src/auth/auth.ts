@@ -3,6 +3,7 @@ import Credentials from 'next-auth/providers/credentials';
 
 declare module 'next-auth' {
   interface User {
+    user_id: string;
     username: string;
     sessionToken: string;
   }
@@ -39,9 +40,9 @@ export const { handlers, auth, signIn } = NextAuth({
           return null;
         }
 
-        const { token: sessionToken } = await response.json();
+        const { id: user_id, token: sessionToken } = await response.json();
 
-        return { username, sessionToken } as User;
+        return { user_id, username, sessionToken } as User;
       },
     }),
   ],
@@ -53,12 +54,14 @@ export const { handlers, auth, signIn } = NextAuth({
       if (user) {
         token.username = user.username;
         token.sessionToken = user.sessionToken;
+        token.sub = user.user_id;
       }
       return token;
     },
     async session({ session, token }) {
       session.user.username = token.username as string;
       session.user.sessionToken = token.sessionToken as string;
+      session.user.user_id = token.sub as string;
       return session;
     },
     authorized({ auth, request: { nextUrl } }) {
