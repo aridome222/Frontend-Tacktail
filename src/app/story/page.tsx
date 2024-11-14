@@ -3,88 +3,64 @@ import { redirect } from 'next/navigation';
 import React from 'react';
 import { StoryCard } from './_components/StoryCard';
 import { StoryTop } from './_components/StoryTop';
+import { fetchRecipe } from '@/utils/api/fetchRecipe';
+import type { RecipeData, User } from '@/utils/types';
+import { fetchUser } from '@/utils/api/fetchUser';
 
 const Story: React.FC = async () => {
   const DEFALT_IMAGE = '/images/hatena.png';
+  const MOCK_COCKTAIL_ID_LIST = ['10', '0', '1', '4', '11', '2', '9', '3'];
 
-  const MOCK_STORY_CLEAR = 2;
-  const MOCK_DATA_LIST = [
-    {
-      cocktail: 'モスコミュール',
-      image: '/images/cocktail/moscow_mule.jpg',
-      materials: ['ウォッカ', 'ジンジャーエール'],
-      day: 1,
-    },
-    {
-      cocktail: 'スクリュードライバー',
-      image: '/images/cocktail/screw_driver.jpg',
-      materials: ['ウォッカ', 'オレンジジュース'],
-      day: 2,
-    },
-    {
-      cocktail: 'ジンバック',
-      image: '/images/cocktail/gin_buck.jpg',
-      materials: ['ジン', 'ジンジャーエール'],
-      day: 3,
-    },
-    {
-      cocktail: 'ロングアイランドアイスティー',
-      image: '/images/cocktail/long_island_ice_tea.jpg',
-      materials: ['ジン', 'ウォッカ', 'テキーラ', 'ラム', 'コアントロー', 'コーラ'],
-      day: 4,
-    },
-    {
-      cocktail: 'モスコミュール',
-      image: '/images/cocktail/moscow_mule.jpg',
-      materials: ['ウォッカ', 'ジンジャーエール'],
-      day: 5,
-    },
-    {
-      cocktail: 'スクリュードライバー',
-      image: '/images/cocktail/screw_driver.jpg',
-      materials: ['ウォッカ', 'オレンジジュース'],
-      day: 6,
-    },
-    {
-      cocktail: 'ジンバック',
-      image: '/images/cocktail/gin_buck.jpg',
-      materials: ['ジン', 'ジンジャーエール'],
-      day: 7,
-    },
-    {
-      cocktail: 'ロングアイランドアイスティー',
-      image: '/images/cocktail/long_island_ice_tea.jpg',
-      materials: ['ジン', 'ウォッカ', 'テキーラ', 'ラム', 'コアントロー', 'コーラ'],
-      day: 8,
-    },
-  ];
+  const recipeDatas: RecipeData[] = [];
+
+  for (let index = 0; index < MOCK_COCKTAIL_ID_LIST.length; index++) {
+    const recipeData = await fetchRecipe(MOCK_COCKTAIL_ID_LIST[index]);
+    recipeDatas.push(recipeData);
+  }
 
   const session = await auth();
   if (!session?.user) redirect('/login');
 
+  const userData: User = await fetchUser(session?.user?.sessionToken);
+
   return (
     <>
       <StoryTop />
-      {MOCK_DATA_LIST.map((item, index) => {
+      {recipeDatas.map((item, index) => {
         return (
-          <React.Fragment key={item.day}>
-            {index < MOCK_STORY_CLEAR && <StoryCard {...item} isActive isClear />}
-            {index === MOCK_STORY_CLEAR && (
+          <React.Fragment key={item.id}>
+            {index < userData.story && (
               <StoryCard
-                cocktail={item.cocktail}
+                cocktail={item.name}
+                image={item.image === '' ? DEFALT_IMAGE : item.image}
+                materials={item.materials.map((material) => {
+                  return material.name;
+                })}
+                day={index + 1}
+                isActive
+                isClear
+              />
+            )}
+            {index === userData.story && (
+              <StoryCard
+                cocktail={item.name}
                 image={DEFALT_IMAGE}
-                materials={item.materials}
-                day={item.day}
+                materials={item.materials.map((material) => {
+                  return material.name;
+                })}
+                day={index + 1}
                 isActive
                 isClear={false}
               />
             )}
-            {index > MOCK_STORY_CLEAR && (
+            {index > userData.story && (
               <StoryCard
-                cocktail={item.cocktail}
+                cocktail={item.name}
                 image={DEFALT_IMAGE}
-                materials={item.materials}
-                day={item.day}
+                materials={item.materials.map((material) => {
+                  return material.name;
+                })}
+                day={index + 1}
                 isActive={false}
                 isClear={false}
               />
