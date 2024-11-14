@@ -10,6 +10,5 @@ export const fetchRecipe = async (id: string): Promise<RecipeData> => {
   }
   // RecipeData型の配列として格納
   const recipesData: RecipeData = await response.json();
-  console.log(recipesData);
   return recipesData;
 };

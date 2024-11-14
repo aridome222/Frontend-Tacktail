@@ -10,7 +10,6 @@ export const fetchCocktailByDay = async (): Promise<CocktailData[]> => {
   }
   // CocktailData型の配列として格納
   const cocktailData: CocktailData[] = await response.json();
-  console.log(cocktailData);
   return cocktailData;
 };
 
