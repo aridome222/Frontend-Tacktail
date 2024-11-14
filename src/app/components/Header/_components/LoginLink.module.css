@@ -1,0 +1,12 @@
+.link {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+.isActive {
+  display: block;
+}
+
+.isDeactive {
+  display: none;
+}
