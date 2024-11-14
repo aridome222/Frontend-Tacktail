@@ -1,22 +1,34 @@
 'use client';
 
+import { signup } from '@/lib/auth';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import type React from 'react';
 import { useState } from 'react';
+import type { FormEvent } from 'react';
 import styles from './Signup.module.css';
 
 const Signup = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // TODO: ログイン処理を実装
-    if (username && password) {
-      setError(''); // ログインが成功した場合はエラーをクリア
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const data = new FormData(event.currentTarget);
+    const username = data.get('username') as string;
+    const password = data.get('password') as string;
+
+    if (!username || !password) {
+      setError('ユーザー名とパスワードを入力してください。');
+      return;
+    }
+
+    const isSignupSucceeded = await signup(username, password);
+    if (isSignupSucceeded) {
+      router.push('/');
     } else {
-      setError('メールアドレスとパスワードを入力してください');
+      setError('ユーザー登録に失敗しました。');
     }
   };
 
@@ -36,18 +48,16 @@ const Signup = () => {
           <div className={styles.inputParent}>
             <input
               id='username'
+              name='username'
               className={styles.input}
               placeholder='ユーザー名'
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
             />
             <input
               id='password'
+              name='password'
               type='password'
               className={styles.input}
               placeholder='パスワード'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <div className={styles.linksContainer}>

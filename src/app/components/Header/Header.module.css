@@ -1,8 +1,12 @@
 .header {
   background: black;
+  position: fixed;
+  display: block;
   border-bottom: solid 1px var(--gold);
   padding: 10px;
   height: 36px;
+  width: 100%;
+  z-index: 1000;
 }
 
 .container {
