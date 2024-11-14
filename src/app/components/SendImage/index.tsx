@@ -13,7 +13,7 @@ type SendImageProps = {
 };
 
 export const SendImage = ({ cocktailId, username }: SendImageProps) => {
-  const [imageUrl, setImageUrl] = useState<string>('/images/secret.jpg'); // 初期画像を secret.jpg
+  const [imageUrl, setImageUrl] = useState<string>('/images/hatena.png'); // 初期画像を secret.jpg
   const inputFileRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
@@ -28,9 +28,9 @@ export const SendImage = ({ cocktailId, username }: SendImageProps) => {
         if (url) {
           setImageUrl(url); // 画像が存在する場合はその URL を設定
         }
-      } catch (error) {
-        console.error('Error fetching image:', error);
-        setImageUrl('/images/secret.jpg'); // エラー時にはデフォルト画像を設定
+      } catch {
+        // ユーザーが画像を登録していない場合、デフォルト画像を表示
+        setImageUrl('/images/hatena.png');
       }
     };
 
