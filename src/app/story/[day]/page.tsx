@@ -1,6 +1,6 @@
 import { Card } from '@/app/components/Card';
-import { fetchCocktailByDay } from '@/utils/api/fetchCocktailByDay';
-import type { CocktailData } from '@/utils/types';
+// import { fetchCocktailByDay } from '@/utils/api/fetchCocktailByDay';
+// import type { CocktailData } from '@/utils/types';
 import Link from 'next/link';
 import { StoryTop } from '../_components/StoryTop';
 import styles from './StoryDay.module.css';
@@ -19,7 +19,7 @@ import styles from './StoryDay.module.css';
 // day指定でレシピを取得
 const MOCK_COCKTAIL = [
   {
-    id: 1,
+    id: '1',
     cocktail: 'モスコミュール',
     image: '/images/cocktail/moscow_mule.jpg',
     recipe: ['ウォッカ', 'ジンジャーエール'],
@@ -29,7 +29,7 @@ const MOCK_COCKTAIL = [
       'モスコミュールは1940年代にアメリカで人気が出たカクテルで、ウォッカをベースにしたジンジャーエールの爽やかさが特徴です。',
   },
   {
-    id: 2,
+    id: '2',
     cocktail: 'スクリュードライバー',
     image: '/images/cocktail/screw_driver.jpg',
     recipe: ['ウォッカ', 'オレンジジュース'],
@@ -39,7 +39,7 @@ const MOCK_COCKTAIL = [
       'スクリュードライバーは1950年代にアメリカで人気を集めたカクテルで、シンプルなウォッカとオレンジジュースの組み合わせが特徴です。',
   },
   {
-    id: 3,
+    id: '3',
     cocktail: 'ジンバック',
     image: '/images/cocktail/gin_buck.jpg',
     recipe: ['ジン', 'ジンジャーエール'],
@@ -49,7 +49,7 @@ const MOCK_COCKTAIL = [
       'ジンは世界４大スピリッツと呼ばれる蒸留酒の一つで、独特の鋭い切れ味と香りを楽しめます。ジンバックはそのジンをベースにした爽やかなカクテルです。',
   },
   {
-    id: 4,
+    id: '4',
     cocktail: 'ロングアイランドアイスティー',
     image: '/images/cocktail/long_island_ice_tea.jpg',
     recipe: ['ジン', 'ウォッカ', 'テキーラ', 'ラム', 'コアントロー', 'コーラ'],
@@ -59,7 +59,7 @@ const MOCK_COCKTAIL = [
       'ロングアイランドアイスティーは、アメリカのロングアイランド地方で誕生したカクテルで、複数のスピリッツとコーラが特徴的です。',
   },
   {
-    id: 5,
+    id: '5',
     cocktail: 'モスコミュール',
     image: '/images/cocktail/moscow_mule.jpg',
     recipe: ['ウォッカ', 'ジンジャーエール'],
@@ -69,7 +69,7 @@ const MOCK_COCKTAIL = [
       'モスコミュールは1940年代にアメリカで人気を集めたカクテルで、ウォッカとジンジャーエールをベースにした爽快感のあるドリンクです。',
   },
   {
-    id: 6,
+    id: '6',
     cocktail: 'スクリュードライバー',
     image: '/images/cocktail/screw_driver.jpg',
     recipe: ['ウォッカ', 'オレンジジュース'],
@@ -79,7 +79,7 @@ const MOCK_COCKTAIL = [
       'スクリュードライバーはウォッカとオレンジジュースを混ぜたシンプルなカクテルですが、その飲みやすさから非常に人気があります。',
   },
   {
-    id: 7,
+    id: '7',
     cocktail: 'ジンバック',
     image: '/images/cocktail/gin_buck.jpg',
     recipe: ['ジン', 'ジンジャーエール'],
@@ -89,7 +89,7 @@ const MOCK_COCKTAIL = [
       'ジンは香り高いスピリッツで、ジンバックはそのジンとジンジャーエールを組み合わせた、爽やかな味わいのカクテルです。',
   },
   {
-    id: 8,
+    id: '8',
     cocktail: 'ロングアイランドアイスティー',
     image: '/images/cocktail/long_island_ice_tea.jpg',
     recipe: ['ジン', 'ウォッカ', 'テキーラ', 'ラム', 'コアントロー', 'コーラ'],
@@ -103,7 +103,7 @@ const MOCK_COCKTAIL = [
 const StoryDay = async ({ params }: { params: Promise<{ day: string }> }) => {
   const { day } = await params;
   // TODO: dayを引数とするfetchCocktailByDay関数を呼び出して、カクテル情報を取得・表示する
-  const cocktail = MOCK_COCKTAIL[Number(day)]
+  const cocktail = MOCK_COCKTAIL[Number(day)];
 
   return (
     <>
