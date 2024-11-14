@@ -13,7 +13,13 @@ export const CocktailImage: React.FC<CocktailImageProps> = ({
 }: CocktailImageProps) => (
   <div className={styles.container}>
     {/* メインの背景画像 */}
-    <Image src={backgroundImagePath} alt='Background' width={100} height={100} objectFit='cover' />
+    <Image
+      src={backgroundImagePath}
+      alt='Background'
+      width={100}
+      height={100}
+      style={{ objectFit: 'cover' }}
+    />
 
     {/* メイン画像の右斜め上に配置する画像 */}
     <div className={styles.overlay}>

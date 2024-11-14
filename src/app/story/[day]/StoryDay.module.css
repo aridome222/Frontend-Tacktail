@@ -8,6 +8,12 @@
   padding-bottom: 0.5em;
 }
 
+.num_text {
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
 .list {
   padding-left: 3em;
   width: fit-content;
