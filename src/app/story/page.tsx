@@ -1,8 +1,10 @@
 import React from 'react';
 import { StoryCard } from './_components/StoryCard';
 import { StoryTop } from './_components/StoryTop';
+import { auth } from '@/auth/auth';
+import { redirect } from 'next/navigation';
 
-const Story: React.FC = () => {
+const Story: React.FC = async () => {
   const DEFALT_IMAGE = '/images/hatena.png';
 
   const MOCK_STORY_CLEAR = 2;
@@ -56,6 +58,9 @@ const Story: React.FC = () => {
       day: 8,
     },
   ];
+
+  const session = await auth();
+  if (!session?.user) redirect('/login');
 
   return (
     <>
