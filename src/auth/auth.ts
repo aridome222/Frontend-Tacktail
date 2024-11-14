@@ -1,4 +1,4 @@
-import NextAuth from 'next-auth';
+import NextAuth, { type User } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 
 declare module 'next-auth' {
@@ -41,7 +41,7 @@ export const { handlers, auth, signIn } = NextAuth({
 
         const { token: sessionToken } = await response.json();
 
-        return { username, sessionToken };
+        return { username, sessionToken } as User;
       },
     }),
   ],

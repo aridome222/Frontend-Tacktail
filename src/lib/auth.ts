@@ -19,7 +19,7 @@ export async function signup(username: string, password: string): Promise<boolea
     }
 
     // サインアップ成功後、サインイン処理を行い、セッションを更新する
-    const signInResponse = await signIn('credentials', {
+    await signIn('credentials', {
       redirect: false,
       username,
       password,

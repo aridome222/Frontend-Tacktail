@@ -8,7 +8,7 @@ const Recipe: React.FC = async () => {
   // ログインしているユーザー名を取得
   const session = await auth();
   const username = session?.user?.username ?? '';
-  const sessionToken = session?.user?.sessionToken ?? '';
+  // const sessionToken = session?.user?.sessionToken ?? '';
 
   return (
     <>
