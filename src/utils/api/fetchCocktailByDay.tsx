@@ -14,13 +14,13 @@ export const fetchCocktailByDay = async (): Promise<CocktailData[]> => {
   return cocktailData;
 };
 
-// カクテル情報の型
-export type CocktailData = {
-  id: string; // カクテルのID
-  cocktail: string; // カクテルの名前
-  image: string; // カクテルの画像
-  recipe: string;
-  day: string;
-  trivia: string;
-  description: string; // カクテルの説明
-};
+// // カクテル情報の型
+// export type CocktailData = {
+//   id: string; // カクテルのID
+//   cocktail: string; // カクテルの名前
+//   image: string; // カクテルの画像
+//   recipe: string;
+//   day: string;
+//   trivia: string;
+//   description: string; // カクテルの説明
+// };
