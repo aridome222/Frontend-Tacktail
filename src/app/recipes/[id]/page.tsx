@@ -1,5 +1,5 @@
+import { SendImage } from '@/app/components/SendImage/index';
 import type React from 'react';
-import { SendImage } from '../components/SendImage/index';
 import { RangeSlider } from './_components/RangeSlider';
 import styles from './recipe.module.css';
 
