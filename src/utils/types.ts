@@ -22,3 +22,11 @@ export type CocktailData = {
   trivia: string;
   description: string; // カクテルの説明
 };
+
+// ユーザー情報の型
+export type User = {
+  id: string; // ユーザーID
+  name: string; // ユーザー名
+  password: string; // パスワード
+  story: number; // ユーザーのストーリーモードクリア数
+};
