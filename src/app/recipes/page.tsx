@@ -16,11 +16,9 @@ const Recipes = async () => {
               id={Number.parseInt(recipe.id)}
               image={recipe.image === '' ? '/images/hatena.png' : recipe.image}
               cocktail={recipe.name}
-              contents={recipe.materials.map(
-                (item) => {
-                  return item.name
-                }
-              )}
+              contents={recipe.materials.map((item) => {
+                return item.name;
+              })}
             />
           ))}
         </div>
