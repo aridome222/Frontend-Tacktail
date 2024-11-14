@@ -52,7 +52,6 @@ import styles from './page.module.css';
 
 const Home = async () => {
   const recipesData: RecipeData[] = await fetchRecipes();
-  console.log(recipesData);
 
   // 初級者にオススメのカクテル（IDが 0, 1, 4, 5, 7）
   const Beginner = [

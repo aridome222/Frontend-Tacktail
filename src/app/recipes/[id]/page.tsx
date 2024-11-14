@@ -11,12 +11,8 @@ const Recipe = async ({ params }: { params: Promise<{ id: string }> }) => {
 
   // ログインしているユーザー名を取得
   const session = await auth();
-  const username = session?.user?.username ?? '';
-  const user_id = session?.user?.user_id ?? '';
-  const sessionToken = session?.user?.sessionToken ?? '';
-  console.log(user_id);
-  console.log(username);
-  console.log(sessionToken);
+  const userId = session?.user?.id ?? '';
+  // const sessionToken = session?.user?.sessionToken ?? '';
 
   return (
     <>
@@ -24,7 +20,7 @@ const Recipe = async ({ params }: { params: Promise<{ id: string }> }) => {
         {/* カクテル画像 */}
         <div className={styles.imageContainer}>
           {/* TODO: cocktaiilId, username は動的ルーティングの番号とログイン済みユーザー名から取ってくるよう修正する */}
-          <SendImage cocktailId={id} username={user_id} />
+          <SendImage cocktailId={id} username={userId} />
         </div>
 
         {/* カクテル情報 */}
