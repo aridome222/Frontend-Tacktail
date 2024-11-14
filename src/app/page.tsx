@@ -84,21 +84,19 @@ const Home = async () => {
     },
   ];
 
-  console.log(categories);
-
   return (
     <>
       <div className={styles.page}>
         {/* トップページの画像 */}
         <div className={styles.imageContainer}>
           <Image
-            src='/images/cocktail/topPage_bar.jpg'
+            src='/images/cocktail/topPage_bar.png'
             alt='topPage_bar'
             fill
             priority
             className={styles.image}
           />
-          <p className={styles.overlayText}>Tacktailへようこそ</p>
+          <p className={styles.overlayText}>Welcome to Tacktail!</p>
         </div>
 
         {/* WEBアプリTacktailの説明 */}
