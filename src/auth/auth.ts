@@ -1,6 +1,13 @@
 import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 
+declare module 'next-auth' {
+  interface User {
+    username: string;
+    sessionToken: string;
+  }
+}
+
 // Define your configuration in a separate variable and pass it to NextAuth()
 // This way we can also 'export const config' for use later
 export const { handlers, auth, signIn } = NextAuth({
@@ -32,7 +39,9 @@ export const { handlers, auth, signIn } = NextAuth({
           return null;
         }
 
-        return (await response.json()) ?? null;
+        const { token: sessionToken } = await response.json();
+
+        return { username, sessionToken };
       },
     }),
   ],
@@ -40,6 +49,18 @@ export const { handlers, auth, signIn } = NextAuth({
     signIn: '/login',
   },
   callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.username = user.username;
+        token.sessionToken = user.sessionToken;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      session.user.username = token.username as string;
+      session.user.sessionToken = token.sessionToken as string;
+      return session;
+    },
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth;
       const isOnProtected = nextUrl.pathname.startsWith('/protected');
