@@ -13,8 +13,6 @@ type CardProps = {
 export const Card: React.FC<CardProps> = ({ id, image, cocktail, contents }: CardProps) => {
   const MAX_MATERIAL = 3;
 
-  console.log(id)
-
   return (
     <Link href={`/recipes/${id}`} className={styles.card}>
       <div className={styles.imageParent}>

@@ -35,6 +35,7 @@ const Login: React.FC = () => {
         return;
       }
 
+      // router.refresh();
       router.push('/');
     } catch {
       setError('ログインエラー。');
