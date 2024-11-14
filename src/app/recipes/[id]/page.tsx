@@ -20,7 +20,7 @@ const Recipe = async ({ params }: { params: Promise<{ id: string }> }) => {
         {/* カクテル画像 */}
         <div className={styles.imageContainer}>
           {/* TODO: cocktaiilId, username は動的ルーティングの番号とログイン済みユーザー名から取ってくるよう修正する */}
-          <SendImage cocktailId={0} username={username} />
+          <SendImage cocktailId={id} username={username} />
         </div>
 
         {/* カクテル情報 */}
