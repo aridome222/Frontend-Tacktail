@@ -10,7 +10,7 @@ const Recipe: React.FC = () => {
         {/* カクテル画像 */}
         <div className={styles.imageContainer}>
           {/* TODO: cocktaiilId, username は動的ルーティングの番号とログイン済みユーザー名から取ってくるよう修正する */}
-          <SendImage cocktailId={0} username='testuser' />
+          <SendImage cocktailId='0' username='testuser' />
         </div>
 
         {/* カクテル情報 */}
