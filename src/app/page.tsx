@@ -1,64 +1,85 @@
+import { fetchRecipes } from '@/utils/api/fetchRecipes';
+import type { RecipeData } from '@/utils/types';
 import Image from 'next/image';
 import { Card } from './components/Card';
 import styles from './page.module.css';
-// モックデータ
-const recipesData = [
-  {
-    id: 0,
-    image: '/images/cocktail/screw_driver.jpg',
-    cocktail: 'モヒート',
-    contents: ['ラム', 'ミント', 'ライム', '炭酸水'],
-    level: 'beginner',
-  },
-  {
-    id: 1,
-    image: '/images/cocktail/screw_driver.jpg',
-    cocktail: 'ジン・トニック',
-    contents: ['ジン', 'トニックウォーター'],
-    level: 'beginner',
-  },
-  {
-    id: 2,
-    image: '/images/cocktail/screw_driver.jpg',
-    cocktail: 'ウイスキーサワー',
-    contents: ['ウイスキー', 'レモンジュース', 'シロップ'],
-    level: 'advanced',
-  },
-  {
-    id: 3,
-    image: '/images/cocktail/screw_driver.jpg',
-    cocktail: 'ネグローニ',
-    contents: ['ジン', 'カンパリ', 'スイート・ベルモット'],
-    level: 'advanced',
-  },
-  {
-    id: 4,
-    image: '/images/cocktail/screw_driver.jpg',
-    cocktail: 'ドライマティーニ',
-    contents: ['ジン', 'ドライ・ベルモット'],
-    level: 'advanced',
-  },
-  {
-    id: 5,
-    image: '/images/cocktail/screw_driver.jpg',
-    cocktail: 'スパイシーマルガリータ',
-    contents: ['テキーラ', 'ライムジュース', 'チリパウダー'],
-    level: 'advanced',
-  },
-];
 
-export default function Home() {
+// モックデータ
+// const recipesData = [
+//   {
+//     id: 0,
+//     image: '/images/cocktail/screw_driver.jpg',
+//     cocktail: 'モヒート',
+//     contents: ['ラム', 'ミント', 'ライム', '炭酸水'],
+//     level: 'beginner',
+//   },
+//   {
+//     id: 1,
+//     image: '/images/cocktail/screw_driver.jpg',
+//     cocktail: 'ジン・トニック',
+//     contents: ['ジン', 'トニックウォーター'],
+//     level: 'beginner',
+//   },
+//   {
+//     id: 2,
+//     image: '/images/cocktail/screw_driver.jpg',
+//     cocktail: 'ウイスキーサワー',
+//     contents: ['ウイスキー', 'レモンジュース', 'シロップ'],
+//     level: 'advanced',
+//   },
+//   {
+//     id: 3,
+//     image: '/images/cocktail/screw_driver.jpg',
+//     cocktail: 'ネグローニ',
+//     contents: ['ジン', 'カンパリ', 'スイート・ベルモット'],
+//     level: 'advanced',
+//   },
+//   {
+//     id: 4,
+//     image: '/images/cocktail/screw_driver.jpg',
+//     cocktail: 'ドライマティーニ',
+//     contents: ['ジン', 'ドライ・ベルモット'],
+//     level: 'advanced',
+//   },
+//   {
+//     id: 5,
+//     image: '/images/cocktail/screw_driver.jpg',
+//     cocktail: 'スパイシーマルガリータ',
+//     contents: ['テキーラ', 'ライムジュース', 'チリパウダー'],
+//     level: 'advanced',
+//   },
+// ];
+
+export default async function Home() {
+  const recipesData: Promise<RecipeData[]> = fetchRecipes();
   // 初心者向けと上級者向けのグループ化
   const categories = [
     {
       name: 'まずは飲みやすい一杯から！初心者向け',
-      categoryData: recipesData.filter((recipe) => recipe.level === 'beginner'),
+      categoryData: (await recipesData).filter((recipe) => recipe.name in Beginner),
     },
     {
       name: 'カクテルアワード優勝への道！上級者向け',
-      categoryData: recipesData.filter((recipe) => recipe.level === 'advanced'),
+      categoryData: (await recipesData).filter((recipe) => recipe.name in Advanced),
     },
   ];
+
+  // 初級者にオススメのカクテル（IDが 0, 1, 4, 5, 7）
+  const Beginner = [
+    'モスコミュール',
+    'スクリュードライバー',
+    'ジンバック',
+    'オレンジブロッサム',
+    'カルーアミルク',
+  ]
+  // 上級者にオススメのカクテル（IDが 2, 3, 6, 8, 9）
+  const Advanced = [
+    'テキーラサンライズ',
+    'ロングアイランドアイスティー',
+    'キューバリブレ',
+    'オーロラ',
+    'XYZ'
+  ]
 
   return (
     <>
@@ -98,8 +119,12 @@ export default function Home() {
                     key={recipe.id}
                     id={recipe.id}
                     image={recipe.image}
-                    cocktail={recipe.cocktail}
-                    contents={recipe.contents}
+                    cocktail={recipe.name}
+                    contents={recipe.materials.map(
+                      (item) => {
+                        return item.name;
+                      }
+                    )}
                   />
                 ))}
               </div>
