@@ -1,9 +1,13 @@
 import { SendImage } from '@/app/components/SendImage/index';
+import { fetchRecipe } from '@/utils/api/fetchRecipe';
 import type React from 'react';
 import { RangeSlider } from './_components/RangeSlider';
 import styles from './recipe.module.css';
 
-const Recipe: React.FC = () => {
+const Recipe = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const { id } = await params;
+  const recipeData = await fetchRecipe(id)
+
   return (
     <>
       <div className={styles.page}>
@@ -14,25 +18,26 @@ const Recipe: React.FC = () => {
         </div>
 
         {/* カクテル情報 */}
-        <h2 className={styles.headline}>モスコミュール</h2>
+        <h2 className={styles.headline}>{recipeData.name}</h2>
         <div className={styles.text}>
           <p>
-            ウォッカベースのカクテルで、ジンジャーエールとライムの爽やかな味わいが特徴です。
-            お好みでカットライム、もしくは、ライム果汁を入れるとより爽やかな味わいになります。
+            {/* ウォッカベースのカクテルで、ジンジャーエールとライムの爽やかな味わいが特徴です。
+            お好みでカットライム、もしくは、ライム果汁を入れるとより爽やかな味わいになります。 */}
+            {recipeData.description}
           </p>
         </div>
 
         {/* 材料 */}
         <h3 className={styles.headline}>材料</h3>
         <div className={styles.ingredient}>
-          <div>
-            <p>ウォッカ</p>
-            <RangeSlider isActive={false} value={2} />
-          </div>
-          <div>
-            <p>オレンジジュース</p>
-            <RangeSlider isActive={false} value={8} />
-          </div>
+          {recipeData.materials.map((material) => {
+            return (
+              <div key={material.id}>
+                <p>{material.name}</p>
+                <RangeSlider isActive={false} value={material.amount} />
+              </div>
+            )
+          })}
         </div>
       </div>
     </>
