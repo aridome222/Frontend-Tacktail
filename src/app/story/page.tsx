@@ -1,8 +1,8 @@
+import { auth } from '@/auth/auth';
+import { redirect } from 'next/navigation';
 import React from 'react';
 import { StoryCard } from './_components/StoryCard';
 import { StoryTop } from './_components/StoryTop';
-import { auth } from '@/auth/auth';
-import { redirect } from 'next/navigation';
 
 const Story: React.FC = async () => {
   const DEFALT_IMAGE = '/images/hatena.png';

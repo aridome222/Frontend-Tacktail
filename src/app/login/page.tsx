@@ -1,11 +1,11 @@
 'use client';
 
+import { signIn } from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import type React from 'react';
 import { useState } from 'react';
 import styles from './Login.module.css';
-import { signIn } from 'next-auth/react';
 
 const Login: React.FC = () => {
   const [error, setError] = useState('');
