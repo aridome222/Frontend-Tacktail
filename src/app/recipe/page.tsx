@@ -1,16 +1,22 @@
+import { auth } from '@/auth/auth';
 import type React from 'react';
 import { SendImage } from '../components/SendImage/index';
 import { RangeSlider } from './_components/RangeSlider';
 import styles from './recipe.module.css';
 
 const Recipe: React.FC = async () => {
+  // ログインしているユーザー名を取得
+  const session = await auth();
+  const username = session?.user?.username ?? '';
+  const sessionToken = session?.user?.sessionToken ?? '';
+
   return (
     <>
       <div className={styles.page}>
         {/* カクテル画像 */}
         <div className={styles.imageContainer}>
           {/* TODO: cocktaiilId, username は動的ルーティングの番号とログイン済みユーザー名から取ってくるよう修正する */}
-          <SendImage cocktailId={0} username='testuser' />
+          <SendImage cocktailId={0} username={username} />
         </div>
 
         {/* カクテル情報 */}
