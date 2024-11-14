@@ -9,13 +9,15 @@ import type { FormEvent } from 'react';
 import styles from './Signup.module.css';
 
 const Signup = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const router = useRouter();
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    const data = new FormData(event.currentTarget);
+    const username = data.get('username') as string;
+    const password = data.get('password') as string;
 
     if (!username || !password) {
       setError('ユーザー名とパスワードを入力してください。');
@@ -46,18 +48,16 @@ const Signup = () => {
           <div className={styles.inputParent}>
             <input
               id='username'
+              name='username'
               className={styles.input}
               placeholder='ユーザー名'
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
             />
             <input
               id='password'
+              name='password'
               type='password'
               className={styles.input}
               placeholder='パスワード'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <div className={styles.linksContainer}>
