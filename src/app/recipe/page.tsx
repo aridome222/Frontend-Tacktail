@@ -2,19 +2,8 @@ import type React from 'react';
 import { SendImage } from '../components/SendImage/index';
 import { RangeSlider } from './_components/RangeSlider';
 import styles from './recipe.module.css';
-import { fetchLoginStatus } from '@/lib/auth';
-// Server component では useRouter ではなく redirect を使う
-import { redirect } from 'next/navigation';
 
 const Recipe: React.FC = async () => {
-  const isLogin = await fetchLoginStatus();
-
-  if (!isLogin) {
-    redirect('/login'); // ログインページにリダイレクト
-  }
-
-  console.log(isLogin);
-
   return (
     <>
       <div className={styles.page}>
