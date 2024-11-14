@@ -1,5 +1,7 @@
 // Server Actions の戻り値には Response 型が使えない
-'use server';
+'use client';
+
+import { signIn } from 'next-auth/react';
 
 export async function signup(username: string, password: string): Promise<boolean> {
   try {
@@ -15,6 +17,13 @@ export async function signup(username: string, password: string): Promise<boolea
     if (!(response.status === 201)) {
       throw new Error('ユーザー登録に失敗しました');
     }
+
+    // サインアップ成功後、サインイン処理を行い、セッションを更新する
+    const signInResponse = await signIn('credentials', {
+      redirect: false,
+      username,
+      password,
+    });
 
     return true;
   } catch {
