@@ -5,6 +5,7 @@ import styles from './Recipes.module.css';
 
 const Recipes = async () => {
   const recipesData: RecipeData[] = await fetchRecipes();
+  console.log(recipesData[0].id)
   return (
     <>
       <div className={styles.page}>
