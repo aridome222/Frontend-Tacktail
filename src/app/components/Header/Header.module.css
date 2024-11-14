@@ -20,4 +20,5 @@
 .link {
   color: var(--gold);
   text-decoration: none;
+  font-weight: bold;
 }
