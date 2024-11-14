@@ -44,6 +44,11 @@
   margin-top: 0.5rem;
 }
 
+.image {
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+}
+
 .overlayText {
   position: absolute;
   top: 5%;
