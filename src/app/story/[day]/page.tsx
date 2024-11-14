@@ -107,9 +107,10 @@ const StoryDay = ({ params }: { params: { day: string } }) => {
       <StoryTop />
       <section className={styles.section}>
         <p className={styles.text}>
-          0．カクテル豆知識{day} {cocktail.trivia}
+          ０．カクテル豆知識<span className={styles.num_text}>{day}</span>
         </p>
-        <p className={styles.text}>{cocktail.description}</p>
+        <p>{cocktail.trivia}</p>
+        <p>{cocktail.description}</p>
       </section>
       <section className={styles.section}>
         <div>
