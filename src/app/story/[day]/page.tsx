@@ -4,6 +4,9 @@ import { Card } from '@/app/components/Card';
 import Link from 'next/link';
 import { StoryTop } from '../_components/StoryTop';
 import styles from './StoryDay.module.css';
+import { MOCK_COCKTAIL_ID_LIST } from '../page';
+import { fetchRecipe } from '@/utils/api/fetchRecipe';
+import type { RecipeData } from '@/utils/types';
 
 // const cocktail = {
 //   id: '1',
@@ -17,82 +20,50 @@ import styles from './StoryDay.module.css';
 // };
 
 // day指定でレシピを取得
-const MOCK_COCKTAIL = [
+const MOCK_TRIVIA_LIST = [
   {
-    id: '1',
-    cocktail: 'モスコミュール',
-    image: '/images/cocktail/moscow_mule.jpg',
-    recipe: ['ウォッカ', 'ジンジャーエール'],
     day: 1,
-    trivia: '〜モスコミュールの由来〜',
+    trivia: '〜カクテルの定義〜',
     description:
-      'モスコミュールは1940年代にアメリカで人気が出たカクテルで、ウォッカをベースにしたジンジャーエールの爽やかさが特徴です。',
+      'お酒に限らず、何かしらの液体と液体を混ぜて作った飲み物のことを指します。ソフトドリンクやシロップ、果物の果汁だけで作るノンアルコールカクテルも存在します。',
   },
   {
-    id: '2',
-    cocktail: 'スクリュードライバー',
-    image: '/images/cocktail/screw_driver.jpg',
-    recipe: ['ウォッカ', 'オレンジジュース'],
     day: 2,
-    trivia: '〜スクリュードライバーの由来〜',
+    trivia: '〜ウォッカは世界４大スピリッツの１つ〜',
     description:
-      'スクリュードライバーは1950年代にアメリカで人気を集めたカクテルで、シンプルなウォッカとオレンジジュースの組み合わせが特徴です。',
+      '蒸留酒全般のことをスピリッツと言い、様々なカクテルで用いられます。中でもウォッカは癖の少ない味わいから、割る飲み物に味わいが大きく依存します。お好きなソフトドリンクで割って、ご賞味ください。',
   },
   {
-    id: '3',
-    cocktail: 'ジンバック',
-    image: '/images/cocktail/gin_buck.jpg',
-    recipe: ['ジン', 'ジンジャーエール'],
     day: 3,
-    trivia: '〜ジンバックの由来〜',
+    trivia: '〜ロングカクテルとショートカクテル〜',
     description:
       'ジンは世界４大スピリッツと呼ばれる蒸留酒の一つで、独特の鋭い切れ味と香りを楽しめます。ジンバックはそのジンをベースにした爽やかなカクテルです。',
   },
   {
-    id: '4',
-    cocktail: 'ロングアイランドアイスティー',
-    image: '/images/cocktail/long_island_ice_tea.jpg',
-    recipe: ['ジン', 'ウォッカ', 'テキーラ', 'ラム', 'コアントロー', 'コーラ'],
     day: 4,
     trivia: '〜ロングアイランドアイスティーの由来〜',
     description:
       'ロングアイランドアイスティーは、アメリカのロングアイランド地方で誕生したカクテルで、複数のスピリッツとコーラが特徴的です。',
   },
   {
-    id: '5',
-    cocktail: 'モスコミュール',
-    image: '/images/cocktail/moscow_mule.jpg',
-    recipe: ['ウォッカ', 'ジンジャーエール'],
     day: 5,
     trivia: '〜モスコミュールの由来〜',
     description:
       'モスコミュールは1940年代にアメリカで人気を集めたカクテルで、ウォッカとジンジャーエールをベースにした爽快感のあるドリンクです。',
   },
   {
-    id: '6',
-    cocktail: 'スクリュードライバー',
-    image: '/images/cocktail/screw_driver.jpg',
-    recipe: ['ウォッカ', 'オレンジジュース'],
     day: 6,
     trivia: '〜スクリュードライバーの由来〜',
     description:
       'スクリュードライバーはウォッカとオレンジジュースを混ぜたシンプルなカクテルですが、その飲みやすさから非常に人気があります。',
   },
   {
-    id: '7',
-    cocktail: 'ジンバック',
-    image: '/images/cocktail/gin_buck.jpg',
-    recipe: ['ジン', 'ジンジャーエール'],
     day: 7,
     trivia: '〜ジンってなに？〜',
     description:
       'ジンは香り高いスピリッツで、ジンバックはそのジンとジンジャーエールを組み合わせた、爽やかな味わいのカクテルです。',
   },
   {
-    id: '8',
-    cocktail: 'ロングアイランドアイスティー',
-    image: '/images/cocktail/long_island_ice_tea.jpg',
-    recipe: ['ジン', 'ウォッカ', 'テキーラ', 'ラム', 'コアントロー', 'コーラ'],
     day: 8,
     trivia: '〜ロングアイランドアイスティーの由来〜',
     description:
@@ -100,27 +71,78 @@ const MOCK_COCKTAIL = [
   },
 ];
 
+// const MOCK_TRIVIA_LIST = [
+//   {
+//     day: 1,
+//     trivia: '〜モスコミュールの由来〜',
+//     description:
+//       'モスコミュールは1940年代にアメリカで人気が出たカクテルで、ウォッカをベースにしたジンジャーエールの爽やかさが特徴です。',
+//   },
+//   {
+//     day: 2,
+//     trivia: '〜スクリュードライバーの由来〜',
+//     description:
+//       'スクリュードライバーは1950年代にアメリカで人気を集めたカクテルで、シンプルなウォッカとオレンジジュースの組み合わせが特徴です。',
+//   },
+//   {
+//     day: 3,
+//     trivia: '〜ジンバックの由来〜',
+//     description:
+//       'ジンは世界４大スピリッツと呼ばれる蒸留酒の一つで、独特の鋭い切れ味と香りを楽しめます。ジンバックはそのジンをベースにした爽やかなカクテルです。',
+//   },
+//   {
+//     day: 4,
+//     trivia: '〜ロングアイランドアイスティーの由来〜',
+//     description:
+//       'ロングアイランドアイスティーは、アメリカのロングアイランド地方で誕生したカクテルで、複数のスピリッツとコーラが特徴的です。',
+//   },
+//   {
+//     day: 5,
+//     trivia: '〜モスコミュールの由来〜',
+//     description:
+//       'モスコミュールは1940年代にアメリカで人気を集めたカクテルで、ウォッカとジンジャーエールをベースにした爽快感のあるドリンクです。',
+//   },
+//   {
+//     day: 6,
+//     trivia: '〜スクリュードライバーの由来〜',
+//     description:
+//       'スクリュードライバーはウォッカとオレンジジュースを混ぜたシンプルなカクテルですが、その飲みやすさから非常に人気があります。',
+//   },
+//   {
+//     day: 7,
+//     trivia: '〜ジンってなに？〜',
+//     description:
+//       'ジンは香り高いスピリッツで、ジンバックはそのジンとジンジャーエールを組み合わせた、爽やかな味わいのカクテルです。',
+//   },
+//   {
+//     day: 8,
+//     trivia: '〜ロングアイランドアイスティーの由来〜',
+//     description:
+//       'ロングアイランドアイスティーは多くのスピリッツを使った複雑な味わいが特徴で、コーラの甘さとスピリッツのバランスが魅力的です。',
+//   },
+// ];
+
 const StoryDay = async ({ params }: { params: Promise<{ day: string }> }) => {
   const { day } = await params;
   // TODO: dayを引数とするfetchCocktailByDay関数を呼び出して、カクテル情報を取得・表示する
-  const cocktail = MOCK_COCKTAIL[Number(day)];
+  const cocktailID = MOCK_COCKTAIL_ID_LIST[Number(day)];
+
+  const recipeData: RecipeData = await fetchRecipe(cocktailID);
 
   return (
     <>
       <StoryTop />
       <section className={styles.section}>
-        <p className={styles.text}>
-          ０．カクテル豆知識<span className={styles.num_text}>{day}</span>
-        </p>
-        <p>{cocktail.trivia}</p>
-        <p>{cocktail.description}</p>
+        <p className={styles.text}>０．カクテル豆知識</p>
+        <p>{MOCK_TRIVIA_LIST[Number(day) - 1].trivia}</p>
+        <p>{MOCK_TRIVIA_LIST[Number(day) - 1].description}</p>
       </section>
       <section className={styles.section}>
         <div>
           <p className={styles.text}>１．以下の材料を揃えよう</p>
           <ul className={styles.list}>
-            {cocktail.recipe.map((item) => {
-              return <li key={item}>{item}</li>;
+            {recipeData.materials.map((item) => {
+              return <li key={item.id}>{item.name}</li>;
             })}
           </ul>
         </div>
@@ -128,10 +150,12 @@ const StoryDay = async ({ params }: { params: Promise<{ day: string }> }) => {
       <section className={styles.section}>
         <p className={styles.text}>２．以下のレシピを作成しよう</p>
         <Card
-          id={cocktail.id}
-          image={cocktail.image}
-          cocktail={cocktail.cocktail}
-          contents={cocktail.recipe}
+          id={recipeData.id}
+          image={recipeData.image === '' ? '/images/hatena.png' : recipeData.image}
+          cocktail={recipeData.name}
+          contents={recipeData.materials.map((material) => {
+            return material.name;
+          })}
         />
       </section>
       <section className={styles.section}>
