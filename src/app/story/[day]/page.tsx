@@ -1,6 +1,5 @@
 import { Card } from '@/app/components/Card';
 import Link from 'next/link';
-import React from 'react';
 import { StoryTop } from '../_components/StoryTop';
 import styles from './StoryDay.module.css';
 
