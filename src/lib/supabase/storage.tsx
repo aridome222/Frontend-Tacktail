@@ -3,7 +3,7 @@ import supabase from '../../utils/supabase';
 type storageProps = {
   file: File;
   bucketName: string;
-  cocktailId: number;
+  cocktailId: string;
   username: string;
 };
 
@@ -16,7 +16,7 @@ export const uploadStorage = async ({
 }: storageProps): Promise<string> => {
   // 引数に与えた username と cocktailId で誰の何のカクテルかを判別する。
   // TODO: アップロードされた画像と同じ拡張子でアップロードする処理の実装
-  const pathName = `cocktails/${username}_${String(cocktailId)}.jpeg`;
+  const pathName = `cocktails/${username}_${cocktailId}.jpeg`;
   const { data, error } = await supabase.storage.from(bucketName).upload(pathName, file, {
     cacheControl: '3600',
     upsert: true,
@@ -31,7 +31,7 @@ export const downloadStorage = async ({
   cocktailId,
   username,
 }: Omit<storageProps, 'file'>): Promise<string | null> => {
-  const pathName = `cocktails/${username}_${String(cocktailId)}.jpeg`;
+  const pathName = `cocktails/${username}_${cocktailId}.jpeg`;
   const { data, error } = await supabase.storage.from(bucketName).download(pathName);
 
   if (error) throw new Error(`Failed to download file: ${error.message}`);

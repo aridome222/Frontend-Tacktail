@@ -8,7 +8,7 @@ import supabase from '../../../utils/supabase';
 import styles from './SendImage.module.css';
 
 type SendImageProps = {
-  cocktailId: number;
+  cocktailId: string;
   username: string;
 };
 
