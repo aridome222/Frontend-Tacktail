@@ -1,29 +1,10 @@
+import { fetchRecipes } from '@/utils/api/fetchRecipes';
+import type { RecipeData } from '@/utils/type';
 import { Card } from '../components/Card';
 import styles from './Recipes.module.css';
 
-// モックデータ
-const recipesData = [
-  {
-    id: 0,
-    image: '/images/cocktail/screw_driver.jpg',
-    cocktail: 'モヒート',
-    contents: ['ラム', 'ミント', 'ライム', '炭酸水'],
-  },
-  {
-    id: 1,
-    image: '/images/cocktail/screw_driver.jpg',
-    cocktail: 'ジンバック',
-    contents: ['ジン', 'レモン', 'ジンジャーエール'],
-  },
-  {
-    id: 2,
-    image: '/images/cocktail/screw_driver.jpg',
-    cocktail: 'ロングアイランドアイスティー',
-    contents: ['ジン', 'ウォッカ', 'ホワイトラム', 'テキーラ', 'コアントロー', 'コーラ'],
-  },
-];
-
-const Recipes = () => {
+const Recipes = async () => {
+  const recipesData: RecipeData[] = await fetchRecipes();
   return (
     <>
       <div className={styles.page}>
@@ -32,10 +13,14 @@ const Recipes = () => {
           {recipesData.map((recipe) => (
             <Card
               key={recipe.id}
-              id={recipe.id}
-              image={recipe.image}
-              cocktail={recipe.cocktail}
-              contents={recipe.contents}
+              id={Number.parseInt(recipe.id)}
+              image={recipe.image === '' ? '/images/hatena.png' : recipe.image}
+              cocktail={recipe.name}
+              contents={recipe.materials.map(
+                (item) => {
+                  return item.name
+                }
+              )}
             />
           ))}
         </div>
