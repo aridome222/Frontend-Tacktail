@@ -50,19 +50,9 @@ import styles from './page.module.css';
 //   },
 // ];
 
-export default async function Home() {
-  const recipesData: Promise<RecipeData[]> = fetchRecipes();
-  // 初心者向けと上級者向けのグループ化
-  const categories = [
-    {
-      name: 'まずは飲みやすい一杯から！初心者向け',
-      categoryData: (await recipesData).filter((recipe) => recipe.name in Beginner),
-    },
-    {
-      name: 'カクテルアワード優勝への道！上級者向け',
-      categoryData: (await recipesData).filter((recipe) => recipe.name in Advanced),
-    },
-  ];
+const Home = async () => {
+  const recipesData: RecipeData[] = await fetchRecipes();
+  console.log(recipesData);
 
   // 初級者にオススメのカクテル（IDが 0, 1, 4, 5, 7）
   const Beginner = [
@@ -71,15 +61,27 @@ export default async function Home() {
     'ジンバック',
     'オレンジブロッサム',
     'カルーアミルク',
-  ]
+  ];
   // 上級者にオススメのカクテル（IDが 2, 3, 6, 8, 9）
   const Advanced = [
     'テキーラサンライズ',
     'ロングアイランドアイスティー',
     'キューバリブレ',
     'オーロラ',
-    'XYZ'
-  ]
+    'XYZ',
+  ];
+
+  // 初心者向けと上級者向けのグループ化
+  const categories = [
+    {
+      name: 'まずは飲みやすい一杯から！初心者向け',
+      categoryData: recipesData.filter((recipe) => recipe.name in Beginner),
+    },
+    {
+      name: 'カクテルアワード優勝への道！上級者向け',
+      categoryData: recipesData.filter((recipe) => recipe.name in Advanced),
+    },
+  ];
 
   return (
     <>
@@ -120,11 +122,9 @@ export default async function Home() {
                     id={recipe.id}
                     image={recipe.image}
                     cocktail={recipe.name}
-                    contents={recipe.materials.map(
-                      (item) => {
-                        return item.name;
-                      }
-                    )}
+                    contents={recipe.materials.map((item) => {
+                      return item.name;
+                    })}
                   />
                 ))}
               </div>
@@ -134,4 +134,6 @@ export default async function Home() {
       </div>
     </>
   );
-}
+};
+
+export default Home;
