@@ -35,6 +35,10 @@
   margin: 40px auto;
 }
 
+.row {
+  margin-bottom: 5px;
+}
+
 .p {
   margin: 40px 0 10px 0;
 }
