@@ -1,9 +1,9 @@
 import type { CocktailImageData } from '../types';
 
 export const sendCocktailImage = async (
-  userID: string,
-  cocktailID: string,
-  imagePath: string,
+  user_id: string,
+  cocktail_id: string,
+  image: string,
   token: string,
 ): Promise<CocktailImageData> => {
   // エンドポイント（TODO: 実行中の環境に応じて、環境変数の部分を本番環境 or 開発環境のものにする）
@@ -16,9 +16,9 @@ export const sendCocktailImage = async (
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      userID,
-      cocktailID,
-      imagePath,
+      user_id,
+      cocktail_id,
+      image,
     }),
     mode: 'cors',
     credentials: 'include',
