@@ -73,7 +73,7 @@ const Home = async () => {
   // 初心者向けと上級者向けのグループ化
   const categories = [
     {
-      name: 'まずは飲みやすい一杯から！初心者向け',
+      name: 'まずは飲みやすい１杯を！初心者向け',
       // categoryData: recipesData.filter((recipe) => recipe.name in Beginner),
       categoryData: recipesData.filter((recipe) => Beginner.includes(recipe.name)),
     },
@@ -100,28 +100,37 @@ const Home = async () => {
         </div>
 
         {/* WEBアプリTacktailの説明 */}
-        <h2 className={styles.margin_y}>
-          Tacktail<span className={styles.text}>とは？</span>
-        </h2>
-        <div className={styles.description}>
-          <div className={styles.text_medium}>
-            <ul>
-              <li>バーは好きだけど、時間やお金がかかる…</li>
-              <li>自宅でカクテル作ってみたいけど、難しそう…</li>
-            </ul>
+        {/* <h2 className={styles.h2}>Tacktail</h2> */}
+        <div className={styles.container}>
+          <div className={styles.description}>
+            {/* <div className={styles.margin_y}> */}
+            {/* <p className={styles.text_larger}>そんなあなたに！</p> */}
+            <p>宅飲みを一段上の領域へ！</p>
+            <p>あなたも宅飲みカクテル始めませんか！？</p>
+            {/* <div className={styles.text_medium}></div> */}
+            {/* </div> */}
           </div>
-          <div className={styles.margin_y}>
-            <p className={styles.text_larger}>そんなあなたに！</p>
-            <p>Tacktailはカクテル選びの手間を減らし、ゲーム感覚でカクテルの物知りになれます！</p>
-            <p>自宅で楽しみながら、自分だけのカクテルコレクションを作ってみましょう！</p>
-          </div>
+          <p className={styles.p}>こんな風に思ってる方へ</p>
+          <ul className={styles.list}>
+            <li>自宅でカクテル作ってみたいけど難しそう…</li>
+            <li>専用の道具なんて持ってない…</li>
+            <li>何のお酒を揃えれば良いんだろう…</li>
+            <li>カクテルって高そう…</li>
+          </ul>
+          <p className={styles.p}>Tacktail使ってみませんか？</p>
+          <ul className={styles.list}>
+            <li>分量は比率で記載しているので、目分量で作って大丈夫です</li>
+            <li>簡単なカクテルならコップだけで作れます</li>
+            <li>段々とお酒を揃えながら楽しめるストーリーモードがあります</li>
+            <li>実はカクテル１杯（350ml）あたりの値段は200円前後なんです</li>
+          </ul>
         </div>
 
         {/* 初心者向けと上級者向けにレシピを表示 */}
         <div className={styles.categoryList}>
           {categories.map((category) => (
             <div key={category.name}>
-              <h3 className={styles.margin_bottom}>{category.name}</h3>
+              <h3 className={styles.h3}>{category.name}</h3>
               <div className={styles.cardList}>
                 {category.categoryData.map((recipe) => (
                   <Card
