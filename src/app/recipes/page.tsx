@@ -2,9 +2,20 @@ import { fetchRecipes } from '@/utils/api/fetchRecipes';
 import type { RecipeData } from '@/utils/types';
 import { Card } from '../components/Card';
 import styles from './Recipes.module.css';
+import { auth } from '@/auth/auth';
+import { fetchRecipesWithAuth } from '@/utils/api/fetchRecipesWithAuth';
 
 const Recipes = async () => {
-  const recipesData: RecipeData[] = await fetchRecipes();
+  const session = await auth();
+  let recipesData: RecipeData[];
+  if (session?.user?.sessionToken) {
+    const token: string = session.user.sessionToken;
+    recipesData = await fetchRecipesWithAuth(token);
+  } else {
+    recipesData = await fetchRecipes();
+  }
+  // const recipesData: RecipeData[] = await fetchRecipes();
+
   return (
     <>
       <div className={styles.page}>

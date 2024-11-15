@@ -5,15 +5,23 @@ import type React from 'react';
 import { RangeSlider } from './_components/RangeSlider';
 import styles from './recipe.module.css';
 import { BackButton } from '@/app/components/BackButton/BackButton';
+import type { RecipeData } from '@/utils/types';
+import { fetchRecipeWithAuth } from '@/utils/api/fetchRecipeWithAuth';
 
 const Recipe = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
-  const recipeData = await fetchRecipe(id);
+  const session = await auth();
+  let recipeData: RecipeData;
+
+  if (session?.user?.sessionToken) {
+    const token: string = session.user.sessionToken;
+    recipeData = await fetchRecipeWithAuth(id, token);
+  } else {
+    recipeData = await fetchRecipe(id);
+  }
 
   // ログインしているユーザー名を取得
-  const session = await auth();
   const userId = session?.user?.id ?? '';
-  // const sessionToken = session?.user?.sessionToken ?? '';
 
   return (
     <>

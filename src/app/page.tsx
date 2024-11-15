@@ -3,9 +3,18 @@ import type { RecipeData } from '@/utils/types';
 import Image from 'next/image';
 import { Card } from './components/Card';
 import styles from './page.module.css';
+import { auth } from '@/auth/auth';
+import { fetchRecipesWithAuth } from '@/utils/api/fetchRecipesWithAuth';
 
 const Home = async () => {
-  const recipesData: RecipeData[] = await fetchRecipes();
+  const session = await auth();
+  let recipesData: RecipeData[];
+  if (session?.user?.sessionToken) {
+    const token: string = session.user.sessionToken;
+    recipesData = await fetchRecipesWithAuth(token);
+  } else {
+    recipesData = await fetchRecipes();
+  }
 
   // 初級者にオススメのカクテル（IDが 0, 1, 4, 5, 7）
   const Beginner = [
