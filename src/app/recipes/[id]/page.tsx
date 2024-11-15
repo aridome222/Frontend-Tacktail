@@ -4,6 +4,7 @@ import { fetchRecipe } from '@/utils/api/fetchRecipe';
 import type React from 'react';
 import { RangeSlider } from './_components/RangeSlider';
 import styles from './recipe.module.css';
+import { BackButton } from '@/app/components/BackButton/BackButton';
 
 const Recipe = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
@@ -45,6 +46,9 @@ const Recipe = async ({ params }: { params: Promise<{ id: string }> }) => {
             );
           })}
         </div>
+
+        {/* 戻るボタン */}
+        <BackButton />
       </div>
     </>
   );
