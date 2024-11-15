@@ -1,16 +1,13 @@
 import { Card } from '@/app/components/Card';
-// import { fetchCocktailByDay } from '@/utils/api/fetchCocktailByDay';
-// import type { CocktailData } from '@/utils/types';
-import Link from 'next/link';
 import { StoryTop } from '../_components/StoryTop';
 import styles from './StoryDay.module.css';
-import { MOCK_COCKTAIL_ID_LIST } from '../page';
 import { fetchRecipe } from '@/utils/api/fetchRecipe';
 import type { RecipeData } from '@/utils/types';
-// import { sendUserStory } from '@/utils/api/sendUserStory';
 import { auth } from '@/auth/auth';
 import { redirect } from 'next/navigation';
 import { CompleteButton } from './_components/CompleteButton';
+
+const MOCK_COCKTAIL_ID_LIST = ['10', '0', '1', '4', '11', '2', '9', '3'];
 
 // day指定でレシピを取得
 const MOCK_TRIVIA_LIST = [
@@ -75,8 +72,6 @@ const StoryDay = async ({ params }: { params: Promise<{ day: string }> }) => {
   const session = await auth();
   if (!session?.user?.sessionToken) redirect('/login');
   const token: string = session.user.sessionToken;
-
-  console.log(token);
 
   return (
     <>

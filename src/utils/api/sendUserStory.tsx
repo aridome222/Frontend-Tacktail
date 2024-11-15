@@ -4,9 +4,6 @@ export const sendUserStory = async (token: string): Promise<UserStoryData> => {
   // エンドポイント（TODO: 実行中の環境に応じて、環境変数の部分を本番環境 or 開発環境のものにする）
   const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/users/story`;
 
-  // console.log(url);
-  // console.log(token);
-
   const response = await fetch(url, {
     method: 'POST',
     headers: {
@@ -15,7 +12,7 @@ export const sendUserStory = async (token: string): Promise<UserStoryData> => {
     mode: 'cors',
     credentials: 'include',
   });
-  console.log(response);
+
   if (!response.ok) {
     throw new Error(`レスポンスステータス: ${response.status}`);
   }

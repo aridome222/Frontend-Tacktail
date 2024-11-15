@@ -11,12 +11,12 @@ export const fetchUser = async (token: string): Promise<User> => {
     mode: 'cors',
     credentials: 'include',
   });
-  // console.log(token);
+
   if (!response.ok) {
     throw new Error(`レスポンスステータス: ${response.status}`);
   }
   // RecipeData型の配列として格納
   const userData: User = await response.json();
-  console.log(userData);
+
   return userData;
 };

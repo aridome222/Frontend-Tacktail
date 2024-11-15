@@ -12,13 +12,11 @@ type CompleteButtonProps = {
   token: string;
 };
 
-export const CompleteButton: React.FC = (props: CompleteButtonProps) => {
+export const CompleteButton: React.FC<CompleteButtonProps> = ({ token }) => {
   const router = useRouter();
 
   const handleClick = () => {
-    console.log(props.token);
-    sendUserStory(props.token);
-    // router.refresh();
+    sendUserStory(token);
     router.push('/story');
   };
 

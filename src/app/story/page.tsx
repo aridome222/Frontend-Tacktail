@@ -7,7 +7,7 @@ import { fetchRecipe } from '@/utils/api/fetchRecipe';
 import type { RecipeData, User } from '@/utils/types';
 import { fetchUser } from '@/utils/api/fetchUser';
 
-export const MOCK_COCKTAIL_ID_LIST = ['10', '0', '1', '4', '11', '2', '9', '3'];
+const MOCK_COCKTAIL_ID_LIST = ['10', '0', '1', '4', '11', '2', '9', '3'];
 
 const Story: React.FC = async () => {
   const DEFALT_IMAGE = '/images/hatena.png';
