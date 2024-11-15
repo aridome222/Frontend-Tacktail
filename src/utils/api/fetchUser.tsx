@@ -17,5 +17,6 @@ export const fetchUser = async (token: string): Promise<User> => {
   }
   // RecipeData型の配列として格納
   const userData: User = await response.json();
+  console.log(userData);
   return userData;
 };

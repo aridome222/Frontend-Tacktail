@@ -1,27 +1,16 @@
 import { Card } from '@/app/components/Card';
 // import { fetchCocktailByDay } from '@/utils/api/fetchCocktailByDay';
 // import type { CocktailData } from '@/utils/types';
-// import Link from 'next/link';
+import Link from 'next/link';
 import { StoryTop } from '../_components/StoryTop';
 import styles from './StoryDay.module.css';
 import { MOCK_COCKTAIL_ID_LIST } from '../page';
 import { fetchRecipe } from '@/utils/api/fetchRecipe';
 import type { RecipeData } from '@/utils/types';
 // import { sendUserStory } from '@/utils/api/sendUserStory';
-// import { auth } from '@/auth/auth';
-// import { redirect } from 'next/navigation';
+import { auth } from '@/auth/auth';
+import { redirect } from 'next/navigation';
 import { CompleteButton } from './_components/CompleteButton';
-
-// const cocktail = {
-//   id: '1',
-//   cocktail: 'モスコミュール',
-//   image: '/images/cocktail/moscow_mule.jpg',
-//   recipe: ['ウォッカ', 'ジンジャーエール'],
-//   day: 1,
-//   trivia: '〜モスコミュールの由来〜',
-//   description:
-//     'モスコミュールは1940年代にアメリカで人気が出たカクテルで、ウォッカをベースにしたジンジャーエールの爽やかさが特徴です。',
-// };
 
 // day指定でレシピを取得
 const MOCK_TRIVIA_LIST = [
@@ -75,57 +64,6 @@ const MOCK_TRIVIA_LIST = [
   },
 ];
 
-// const MOCK_TRIVIA_LIST = [
-//   {
-//     day: 1,
-//     trivia: '〜モスコミュールの由来〜',
-//     description:
-//       'モスコミュールは1940年代にアメリカで人気が出たカクテルで、ウォッカをベースにしたジンジャーエールの爽やかさが特徴です。',
-//   },
-//   {
-//     day: 2,
-//     trivia: '〜スクリュードライバーの由来〜',
-//     description:
-//       'スクリュードライバーは1950年代にアメリカで人気を集めたカクテルで、シンプルなウォッカとオレンジジュースの組み合わせが特徴です。',
-//   },
-//   {
-//     day: 3,
-//     trivia: '〜ジンバックの由来〜',
-//     description:
-//       'ジンは世界４大スピリッツと呼ばれる蒸留酒の一つで、独特の鋭い切れ味と香りを楽しめます。ジンバックはそのジンをベースにした爽やかなカクテルです。',
-//   },
-//   {
-//     day: 4,
-//     trivia: '〜ロングアイランドアイスティーの由来〜',
-//     description:
-//       'ロングアイランドアイスティーは、アメリカのロングアイランド地方で誕生したカクテルで、複数のスピリッツとコーラが特徴的です。',
-//   },
-//   {
-//     day: 5,
-//     trivia: '〜モスコミュールの由来〜',
-//     description:
-//       'モスコミュールは1940年代にアメリカで人気を集めたカクテルで、ウォッカとジンジャーエールをベースにした爽快感のあるドリンクです。',
-//   },
-//   {
-//     day: 6,
-//     trivia: '〜スクリュードライバーの由来〜',
-//     description:
-//       'スクリュードライバーはウォッカとオレンジジュースを混ぜたシンプルなカクテルですが、その飲みやすさから非常に人気があります。',
-//   },
-//   {
-//     day: 7,
-//     trivia: '〜ジンってなに？〜',
-//     description:
-//       'ジンは香り高いスピリッツで、ジンバックはそのジンとジンジャーエールを組み合わせた、爽やかな味わいのカクテルです。',
-//   },
-//   {
-//     day: 8,
-//     trivia: '〜ロングアイランドアイスティーの由来〜',
-//     description:
-//       'ロングアイランドアイスティーは多くのスピリッツを使った複雑な味わいが特徴で、コーラの甘さとスピリッツのバランスが魅力的です。',
-//   },
-// ];
-
 const StoryDay = async ({ params }: { params: Promise<{ day: string }> }) => {
   const { day } = await params;
 
@@ -134,9 +72,11 @@ const StoryDay = async ({ params }: { params: Promise<{ day: string }> }) => {
 
   const recipeData: RecipeData = await fetchRecipe(cocktailID);
 
-  // const session = await auth();
-  // if (!session?.user) redirect('/login');
-  // const token = session.user.sessionToken;
+  const session = await auth();
+  if (!session?.user?.sessionToken) redirect('/login');
+  const token: string = session.user.sessionToken;
+
+  console.log(token);
 
   return (
     <>
@@ -170,7 +110,7 @@ const StoryDay = async ({ params }: { params: Promise<{ day: string }> }) => {
       <section className={styles.section}>
         <p className={styles.text}>３．作成完了ボタンを押そう</p>
         <div className={styles.buttonContainer}>
-          <CompleteButton />
+          <CompleteButton token={token} />
         </div>
       </section>
     </>

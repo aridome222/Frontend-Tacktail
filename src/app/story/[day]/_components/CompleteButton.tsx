@@ -3,31 +3,27 @@
 // import Link from 'next/link';
 import styles from './CompleteButton.module.css';
 import { sendUserStory } from '@/utils/api/sendUserStory';
-import type { UserStoryData } from '@/utils/types';
+// import type { UserStoryData } from '@/utils/types';
 import type React from 'react';
-import { redirect, useRouter } from 'next/navigation';
-import { auth } from '@/auth/auth';
+import { useRouter } from 'next/navigation';
+// import { auth } from '@/auth/auth';
 
-export const CompleteButton: React.FC = () => {
+type CompleteButtonProps = {
+  token: string;
+};
+
+export const CompleteButton: React.FC = (props: CompleteButtonProps) => {
   const router = useRouter();
 
-  const handleClick = async (event: React.FormEvent<HTMLFormElement>) => {
-    alert('text');
-    event.preventDefault();
-
-    const session = await auth();
-    if (!session?.user) redirect('/story');
-    const token = session.user.sessionToken;
-
-    console.log(token);
-    const result: UserStoryData = await sendUserStory(token);
-    console.log(result);
+  const handleClick = () => {
+    console.log(props.token);
+    sendUserStory(props.token);
     // router.refresh();
     router.push('/story');
   };
 
   return (
-    <button type='button' className={styles.button} onClick={() => handleClick}>
+    <button type='button' className={styles.button} onClick={handleClick}>
       作成完了
     </button>
   );
