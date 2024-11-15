@@ -35,3 +35,10 @@ export type UserStoryData = {
   user_id: string;
   story: number;
 };
+
+export type CocktailImageData = {
+  image_id: string;
+  user_id: string;
+  cocktail_id: string;
+  image: string;
+};
