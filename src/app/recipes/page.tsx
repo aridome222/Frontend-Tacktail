@@ -1,29 +1,21 @@
+import { fetchRecipes } from '@/utils/api/fetchRecipes';
+import type { RecipeData } from '@/utils/types';
 import { Card } from '../components/Card';
 import styles from './Recipes.module.css';
+import { auth } from '@/auth/auth';
+import { fetchRecipesWithAuth } from '@/utils/api/fetchRecipesWithAuth';
 
-// モックデータ
-const recipesData = [
-  {
-    id: 0,
-    image: '/images/cocktail/screw_driver.jpg',
-    cocktail: 'モヒート',
-    contents: ['ラム', 'ミント', 'ライム', '炭酸水'],
-  },
-  {
-    id: 1,
-    image: '/images/cocktail/screw_driver.jpg',
-    cocktail: 'ジンバック',
-    contents: ['ジン', 'レモン', 'ジンジャーエール'],
-  },
-  {
-    id: 2,
-    image: '/images/cocktail/screw_driver.jpg',
-    cocktail: 'ロングアイランドアイスティー',
-    contents: ['ジン', 'ウォッカ', 'ホワイトラム', 'テキーラ', 'コアントロー', 'コーラ'],
-  },
-];
+const Recipes = async () => {
+  const session = await auth();
+  let recipesData: RecipeData[];
+  if (session?.user?.sessionToken) {
+    const token: string = session.user.sessionToken;
+    recipesData = await fetchRecipesWithAuth(token);
+  } else {
+    recipesData = await fetchRecipes();
+  }
+  // const recipesData: RecipeData[] = await fetchRecipes();
 
-const Recipes = () => {
   return (
     <>
       <div className={styles.page}>
@@ -33,9 +25,11 @@ const Recipes = () => {
             <Card
               key={recipe.id}
               id={recipe.id}
-              image={recipe.image}
-              cocktail={recipe.cocktail}
-              contents={recipe.contents}
+              image={recipe.image === '' ? '/images/hatena.png' : recipe.image}
+              cocktail={recipe.name}
+              contents={recipe.materials.map((item) => {
+                return item.name;
+              })}
             />
           ))}
         </div>

@@ -1,7 +1,8 @@
 .header {
   background: black;
   position: fixed;
-  display: block;
+  display: flex;
+  justify-content: space-between;
   border-bottom: solid 1px var(--gold);
   padding: 10px;
   height: 36px;
@@ -19,4 +20,5 @@
 .link {
   color: var(--gold);
   text-decoration: none;
+  font-weight: bold;
 }

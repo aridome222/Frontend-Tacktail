@@ -4,7 +4,7 @@ import { CocktailImage } from '../CocktailImage';
 import styles from './Card.module.css';
 
 type CardProps = {
-  id: number;
+  id: string;
   cocktail: string;
   image: string;
   contents: string[];
@@ -13,8 +13,10 @@ type CardProps = {
 export const Card: React.FC<CardProps> = ({ id, image, cocktail, contents }: CardProps) => {
   const MAX_MATERIAL = 3;
 
+  console.log(id)
+
   return (
-    <Link href={`/recipe/${id}`} className={styles.card}>
+    <Link href={`/recipes/${id}`} className={styles.card}>
       <div className={styles.imageParent}>
         <CocktailImage backgroundImagePath={image} cocktailName={cocktail} />
       </div>

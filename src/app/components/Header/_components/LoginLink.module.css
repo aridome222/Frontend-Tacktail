@@ -1,0 +1,15 @@
+.link {
+  color: var(--gold);
+  background-color: #000;
+  border: none;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.isActive {
+  display: block;
+}
+
+.isDeactive {
+  display: none;
+}
