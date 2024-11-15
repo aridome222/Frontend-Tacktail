@@ -16,6 +16,13 @@ const Home = async () => {
     recipesData = await fetchRecipes();
   }
 
+  // ノンアルコールカクテル（IDが 0, 1, 4, 5, 7）
+  const Nonalcoholic = [
+    'シンデレラ',
+    'シャーリーテンプル',
+    'フルーツパンチ',
+    // 'プッシーキャット',
+  ];
   // 初級者にオススメのカクテル（IDが 0, 1, 4, 5, 7）
   const Beginner = [
     'モスコミュール',
@@ -35,6 +42,11 @@ const Home = async () => {
 
   // 初心者向けと上級者向けのグループ化
   const categories = [
+    {
+      name: '展示会中は流石にノンアルコールで',
+      // categoryData: recipesData.filter((recipe) => recipe.name in Advanced),
+      categoryData: recipesData.filter((recipe) => Nonalcoholic.includes(recipe.name)),
+    },
     {
       name: 'まずは飲みやすい１杯を！初心者向け',
       // categoryData: recipesData.filter((recipe) => recipe.name in Beginner),
