@@ -94,10 +94,10 @@ export const SendImage = ({ cocktailId, username, token }: SendImageProps) => {
         <button
           id='fillSelect'
           type='button'
-          className={styles.button}
+          className={`${styles.button} ${!token ? styles.isDeactive : styles.isActive}`}
           onClick={() => inputFileRef.current?.click()}
         >
-          画像を選択
+          {!token ? 'ログインして画像を投稿' : '画像を選択'}
         </button>
       </div>
     </>
