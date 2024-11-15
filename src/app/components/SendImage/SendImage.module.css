@@ -23,9 +23,11 @@
 .isActive {
   padding: 0.75rem 5rem;
   pointer-events: all;
+  opacity: 1;
 }
 
 .isDeactive {
   padding: 0.75rem 2rem;
   pointer-events: none;
+  opacity: 0.5;
 }
