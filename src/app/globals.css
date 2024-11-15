@@ -13,12 +13,13 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  font-family: Georgia, serif;
 }
 
 body {
   color: #eee;
   /* color: var(--gold); */
-  font-family: "Courier New", Courier, monospace;
+  font-family: Georgia, "Times New Roman", Times, serif;
   background: radial-gradient(
       ellipse farthest-side at 0 0,
       var(--seal-brown),
@@ -40,6 +41,10 @@ body {
 main {
   padding: 0 10px;
   margin-top: 45px;
+}
+
+button {
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 * {
