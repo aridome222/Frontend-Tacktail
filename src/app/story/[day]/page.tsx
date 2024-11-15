@@ -1,12 +1,16 @@
 import { Card } from '@/app/components/Card';
 // import { fetchCocktailByDay } from '@/utils/api/fetchCocktailByDay';
 // import type { CocktailData } from '@/utils/types';
-import Link from 'next/link';
+// import Link from 'next/link';
 import { StoryTop } from '../_components/StoryTop';
 import styles from './StoryDay.module.css';
 import { MOCK_COCKTAIL_ID_LIST } from '../page';
 import { fetchRecipe } from '@/utils/api/fetchRecipe';
 import type { RecipeData } from '@/utils/types';
+// import { sendUserStory } from '@/utils/api/sendUserStory';
+// import { auth } from '@/auth/auth';
+// import { redirect } from 'next/navigation';
+import { CompleteButton } from './_components/CompleteButton';
 
 // const cocktail = {
 //   id: '1',
@@ -124,10 +128,15 @@ const MOCK_TRIVIA_LIST = [
 
 const StoryDay = async ({ params }: { params: Promise<{ day: string }> }) => {
   const { day } = await params;
+
   // TODO: dayを引数とするfetchCocktailByDay関数を呼び出して、カクテル情報を取得・表示する
   const cocktailID = MOCK_COCKTAIL_ID_LIST[Number(day) - 1];
 
   const recipeData: RecipeData = await fetchRecipe(cocktailID);
+
+  // const session = await auth();
+  // if (!session?.user) redirect('/login');
+  // const token = session.user.sessionToken;
 
   return (
     <>
@@ -161,9 +170,7 @@ const StoryDay = async ({ params }: { params: Promise<{ day: string }> }) => {
       <section className={styles.section}>
         <p className={styles.text}>３．作成完了ボタンを押そう</p>
         <div className={styles.buttonContainer}>
-          <Link href='/story' className={styles.button}>
-            作成完了
-          </Link>
+          <CompleteButton />
         </div>
       </section>
     </>

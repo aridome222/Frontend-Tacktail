@@ -30,3 +30,8 @@ export type User = {
   password: string; // パスワード
   story: number; // ユーザーのストーリーモードクリア数
 };
+
+export type UserStoryData = {
+  user_id: string;
+  story: number;
+};
