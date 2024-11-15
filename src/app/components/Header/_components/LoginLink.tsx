@@ -1,16 +1,24 @@
-import { auth } from '@/auth/auth';
-import Link from 'next/link';
-import styles from './LoginLink.module.css';
+'use client';
 
-export const LoginButton = async () => {
-  const session = await auth();
+// import Link from 'next/link';
+import styles from './LoginLink.module.css';
+import type { Session } from 'next-auth';
+import { useRouter } from 'next/navigation';
+
+export const LoginButton = (props: { session: Session | null }) => {
+  const router = useRouter();
+  const handleClick = () => {
+    router.refresh();
+    router.push('/login');
+  };
 
   return (
-    <Link
-      href='/login'
-      className={`${styles.link} ${session?.user ? styles.isDeactive : styles.isActive}`}
+    <button
+      type='button'
+      className={`${styles.link} ${props.session?.user ? styles.isDeactive : styles.isActive}`}
+      onClick={handleClick}
     >
       Login
-    </Link>
+    </button>
   );
 };
