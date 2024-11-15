@@ -54,29 +54,24 @@ const Home = async () => {
         </div>
 
         {/* WEBアプリTacktailの説明 */}
-        {/* <h2 className={styles.h2}>Tacktail</h2> */}
         <div className={styles.container}>
           <div className={styles.description}>
-            {/* <div className={styles.margin_y}> */}
-            {/* <p className={styles.text_larger}>そんなあなたに！</p> */}
             <p>宅飲みを一段上の領域へ！</p>
             <p>あなたも宅飲みカクテル始めませんか！？</p>
-            {/* <div className={styles.text_medium}></div> */}
-            {/* </div> */}
           </div>
           <p className={styles.p}>こんな風に思ってる方へ</p>
           <ul className={styles.list}>
-            <li>自宅でカクテル作ってみたいけど難しそう…</li>
-            <li>専用の道具なんて持ってない…</li>
-            <li>何のお酒を揃えれば良いんだろう…</li>
-            <li>カクテルって高そう…</li>
+            <li className={styles.li}>自宅でカクテル作ってみたいけど難しそう…</li>
+            <li className={styles.li}>専用の道具なんて持ってない…</li>
+            <li className={styles.li}>何のお酒を揃えれば良いんだろう…</li>
+            <li className={styles.li}>カクテルって高そう…</li>
           </ul>
           <p className={styles.p}>Tacktail使ってみませんか？</p>
           <ul className={styles.list}>
-            <li>分量は比率で記載しているので、目分量で作って大丈夫です</li>
-            <li>簡単なカクテルならコップだけで作れます</li>
-            <li>段々とお酒を揃えながら楽しめるストーリーモードがあります</li>
-            <li>実はカクテル１杯（350ml）あたりの値段は200円前後なんです</li>
+            <li className={styles.li}>分量は比率で記載しているので、目分量で作って大丈夫です</li>
+            <li className={styles.li}>簡単なカクテルならコップだけで作れます</li>
+            <li className={styles.li}>段々とお酒を揃えながら楽しめるストーリーモードがあります</li>
+            <li className={styles.li}>実はカクテル１杯（350ml）あたりの値段は200円前後なんです</li>
           </ul>
         </div>
 

@@ -43,6 +43,10 @@
   padding-left: 1em;
 }
 
+.li {
+  margin-bottom: 5px;
+}
+
 .categoryList {
   display: flex;
   flex-direction: column;
