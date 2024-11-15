@@ -1,10 +1,10 @@
 import { Card } from '@/app/components/Card';
-import { StoryTop } from '../_components/StoryTop';
-import styles from './StoryDay.module.css';
+import { auth } from '@/auth/auth';
 import { fetchRecipe } from '@/utils/api/fetchRecipe';
 import type { RecipeData } from '@/utils/types';
-import { auth } from '@/auth/auth';
 import { redirect } from 'next/navigation';
+import { StoryTop } from '../_components/StoryTop';
+import styles from './StoryDay.module.css';
 import { CompleteButton } from './_components/CompleteButton';
 
 const MOCK_COCKTAIL_ID_LIST = ['10', '0', '1', '4', '11', '2', '9', '3'];

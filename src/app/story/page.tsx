@@ -1,11 +1,11 @@
 import { auth } from '@/auth/auth';
+import { fetchRecipe } from '@/utils/api/fetchRecipe';
+import { fetchUser } from '@/utils/api/fetchUser';
+import type { RecipeData, User } from '@/utils/types';
 import { redirect } from 'next/navigation';
 import React from 'react';
 import { StoryCard } from './_components/StoryCard';
 import { StoryTop } from './_components/StoryTop';
-import { fetchRecipe } from '@/utils/api/fetchRecipe';
-import type { RecipeData, User } from '@/utils/types';
-import { fetchUser } from '@/utils/api/fetchUser';
 
 const MOCK_COCKTAIL_ID_LIST = ['10', '0', '1', '4', '11', '2', '9', '3'];
 

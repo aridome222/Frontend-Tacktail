@@ -1,6 +1,6 @@
+import { auth } from '@/auth/auth';
 import Link from 'next/link';
 import styles from './LoginLink.module.css';
-import { auth } from '@/auth/auth';
 
 export const LoginButton = async () => {
   const session = await auth();

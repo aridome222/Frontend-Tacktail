@@ -1,7 +1,7 @@
-import { auth } from '@/auth/auth';
-import type React from 'react';
 import { SendImage } from '@/app/components/SendImage/index';
+import { auth } from '@/auth/auth';
 import { fetchRecipe } from '@/utils/api/fetchRecipe';
+import type React from 'react';
 import { RangeSlider } from './_components/RangeSlider';
 import styles from './recipe.module.css';
 

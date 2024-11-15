@@ -1,12 +1,9 @@
 'use client';
 
-// import Link from 'next/link';
-import styles from './CompleteButton.module.css';
 import { sendUserStory } from '@/utils/api/sendUserStory';
-// import type { UserStoryData } from '@/utils/types';
-import type React from 'react';
 import { useRouter } from 'next/navigation';
-// import { auth } from '@/auth/auth';
+import type React from 'react';
+import styles from './CompleteButton.module.css';
 
 type CompleteButtonProps = {
   token: string;
