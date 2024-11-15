@@ -6,13 +6,15 @@ import type React from 'react';
 import { downloadStorage, uploadStorage } from '../../../lib/supabase/storage';
 import supabase from '../../../utils/supabase';
 import styles from './SendImage.module.css';
+import { sendCocktailImage } from '@/utils/api/sendCocktailImage';
 
 type SendImageProps = {
   cocktailId: string;
   username: string;
+  token: string;
 };
 
-export const SendImage = ({ cocktailId, username }: SendImageProps) => {
+export const SendImage = ({ cocktailId, username, token }: SendImageProps) => {
   const [imageUrl, setImageUrl] = useState<string>('/images/hatena.png'); // 初期画像を secret.jpg
   const inputFileRef = useRef<HTMLInputElement | null>(null);
 
@@ -54,6 +56,16 @@ export const SendImage = ({ cocktailId, username }: SendImageProps) => {
       // URL が同じだと更新前の画像が表示されたままなので、タイムスタンプをつけて状態変数を更新
       const imageUrlWithTimestamp = `${data.publicUrl}?t=${new Date().getTime()}`;
       setImageUrl(imageUrlWithTimestamp);
+
+      // バックエンドに画像パスを保存する
+      const cocktailImageData = await sendCocktailImage(
+        username,
+        cocktailId,
+        imageUrlWithTimestamp,
+        token,
+      );
+
+      console.log(cocktailImageData);
     }
   };
 
