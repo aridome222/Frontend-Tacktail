@@ -77,8 +77,8 @@ const Home = async () => {
         {/* WEBアプリTacktailの説明 */}
         <div className={styles.container}>
           <div className={styles.description}>
-            <p className={styles.row}>宅飲みを一段上の領域へ！</p>
-            <p className={styles.row}>あなたも宅飲みカクテル始めませんか！？</p>
+            <p>宅飲みを一段上の領域へ！</p>
+            <p>あなたも宅飲みカクテル始めませんか！？</p>
           </div>
           <p className={styles.p}>こんな風に思ってる方へ</p>
           <ul className={styles.list}>
