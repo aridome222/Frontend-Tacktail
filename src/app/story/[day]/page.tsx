@@ -1,11 +1,12 @@
 import { Card } from '@/app/components/Card';
 import { auth } from '@/auth/auth';
-import { fetchRecipe } from '@/utils/api/fetchRecipe';
-import type { RecipeData } from '@/utils/types';
+import type { RecipeData, User } from '@/utils/types';
 import { redirect } from 'next/navigation';
 import { StoryTop } from '../_components/StoryTop';
 import styles from './StoryDay.module.css';
 import { CompleteButton } from './_components/CompleteButton';
+import { fetchRecipeWithAuth } from '@/utils/api/fetchRecipeWithAuth';
+import { fetchUser } from '@/utils/api/fetchUser';
 
 const MOCK_COCKTAIL_ID_LIST = ['10', '0', '1', '4', '11', '2', '9', '3'];
 
@@ -67,11 +68,12 @@ const StoryDay = async ({ params }: { params: Promise<{ day: string }> }) => {
   // TODO: dayを引数とするfetchCocktailByDay関数を呼び出して、カクテル情報を取得・表示する
   const cocktailID = MOCK_COCKTAIL_ID_LIST[Number(day) - 1];
 
-  const recipeData: RecipeData = await fetchRecipe(cocktailID);
-
   const session = await auth();
   if (!session?.user?.sessionToken) redirect('/login');
+
   const token: string = session.user.sessionToken;
+  const recipeData: RecipeData = await fetchRecipeWithAuth(cocktailID, token);
+  const userData: User = await fetchUser(session?.user?.sessionToken);
 
   return (
     <>
@@ -105,7 +107,7 @@ const StoryDay = async ({ params }: { params: Promise<{ day: string }> }) => {
       <section className={styles.section}>
         <p className={styles.text}>３．作成完了ボタンを押そう</p>
         <div className={styles.buttonContainer}>
-          <CompleteButton token={token} />
+          <CompleteButton token={token} isEnabled={Number(day) === userData.story + 1} />
         </div>
       </section>
     </>

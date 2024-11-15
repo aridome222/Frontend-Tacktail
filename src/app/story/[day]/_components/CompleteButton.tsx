@@ -7,13 +7,14 @@ import styles from './CompleteButton.module.css';
 
 type CompleteButtonProps = {
   token: string;
+  isEnabled: boolean;
 };
 
-export const CompleteButton: React.FC<CompleteButtonProps> = ({ token }) => {
+export const CompleteButton: React.FC<CompleteButtonProps> = ({ token, isEnabled }) => {
   const router = useRouter();
 
   const handleClick = () => {
-    sendUserStory(token);
+    if (isEnabled) sendUserStory(token);
     router.push('/story');
   };
 
